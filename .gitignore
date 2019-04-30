@@ -1,0 +1,4 @@
+.OS_Store
+
+# npm
+node_modules/**/.bin/
