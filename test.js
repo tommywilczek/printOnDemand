@@ -1,5 +1,7 @@
 var dictionary = {
-    "myKey": "myValue"
+    "myKey": "myValue",
+    "secondKey": [1,2,3]
 }
 
-console.log(dictionary.myKey);
+for (const [key, value] of Object.entries(dictionary))
+    console.log(key, value);
