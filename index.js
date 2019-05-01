@@ -1,3 +1,14 @@
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function waitToDownload() {
+    console.log("sleeping...");
+    await sleep(2000);
+    console.log("done sleeping...");
+
+  }
+
 function saveBase64AsFile(base64, fileName) {
 
     var link = document.createElement("a");
@@ -48,8 +59,7 @@ function generateDictOfPatterns(patternDict) {
     };
 
     for (const [key, value] of Object.entries(colorBrewerList)) {
-        console.log("Creating: " + key, value);
-        // console.log(colorBrewerList[value]);
+        // console.log("Creating: " + key, value);
         var pattern = Trianglify({
             cell_size: 1000,
             variance: "1",
@@ -57,16 +67,23 @@ function generateDictOfPatterns(patternDict) {
             width: 15000,
             height: 15000
         });
+        // pattern = pattern.png()
         patternDict[key] = pattern;
     }
     return patternDict;
 }
+
+async function saveGeneratedPatterns(patternDict) {
+    for (const [key, value] of Object.entries(patternDict)) {
+        console.log("Waiting to download", key, value);
+        await sleep(5000);
+        console.log("Starting download", key, value);
+        saveBase64AsFile(value.png(), key + ".png");
+    }
+}
+
 var patternDict = {};
 patternDict = generateDictOfPatterns(patternDict);
-console.log(patternDict);
+// console.log(patternDict);
 
-const png = pattern.png();
-saveBase64AsFile(png, key + ".png");
-// console.log(png);
-// document.body.appendChild(pattern.png())
-// saveBase64AsFile(png, 'testFile.png')
+saveGeneratedPatterns(patternDict);
