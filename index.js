@@ -7,7 +7,7 @@ function saveBase64AsFile(base64, fileName) {
     link.click();
 }
 
-function generateListOfPatterns(params) {
+function generateDictOfPatterns(patternDict) {
     var colorBrewerList = {
         "Blues": "Blues",
         "Greens": "Greens",
@@ -49,19 +49,24 @@ function generateListOfPatterns(params) {
 
     for (const [key, value] of Object.entries(colorBrewerList)) {
         console.log("Creating: " + key, value);
+        // console.log(colorBrewerList[value]);
         var pattern = Trianglify({
             cell_size: 1000,
             variance: "1",
-            x_colors: colorBrewerList.CubeHelixDefault,
+            x_colors: value,
             width: 15000,
             height: 15000
         });
+        patternDict[key] = pattern;
     }
+    return patternDict;
 }
-generateListOfPatterns();
+var patternDict = {};
+patternDict = generateDictOfPatterns(patternDict);
+console.log(patternDict);
+
 const png = pattern.png();
+saveBase64AsFile(png, key + ".png");
 // console.log(png);
-pngColors = pattern.opts.x_colors;
-console.log(pngColors);
 // document.body.appendChild(pattern.png())
 // saveBase64AsFile(png, 'testFile.png')
