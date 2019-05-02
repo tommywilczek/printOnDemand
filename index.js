@@ -76,14 +76,20 @@ function generateDictOfPatterns(patternDict) {
 async function saveGeneratedPatterns(patternDict) {
     for (const [key, value] of Object.entries(patternDict)) {
         console.log("Waiting to download", key, value);
-        await sleep(5000);
+        // await sleep(5000);
         console.log("Starting download", key, value);
-        saveBase64AsFile(value.png(), key + ".png");
+        var pngToSave = value.png();
+        // pngToSave.remove();
+        // saveBase64AsFile(value.png(), key + ".png");
     }
 }
 
-var patternDict = {};
-patternDict = generateDictOfPatterns(patternDict);
-// console.log(patternDict);
+function generateAndSavePatterns() {
+    var patternDict = {};
+    patternDict = generateDictOfPatterns(patternDict);
+    // console.log(patternDict);
 
-saveGeneratedPatterns(patternDict);
+    saveGeneratedPatterns(patternDict);
+
+}
+
