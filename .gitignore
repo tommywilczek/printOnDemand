@@ -4,3 +4,7 @@
 node_modules/**/.bin/
 
 config.ini
+
+.vscode
+
+.pytest_cache
