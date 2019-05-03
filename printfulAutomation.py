@@ -16,6 +16,8 @@ def main():
     loginToPrintful(printfulPassword)
     waitForPageLoad()
     goToChooseProduct()
+    waitForPageLoad()
+    navigateToMensAllOverShirts()
 
 def loginToPrintful(printfulPassword):
     browser.get("https://www.printful.com/auth/login")
@@ -39,6 +41,15 @@ def goToChooseProduct():
 
     addProductButton.click()
 
+def navigateToMensAllOverShirts():
+    # Prerequisite: goToChooseProduct
+    mensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[1]')
+
+    mensClothingButton.click()
+
+    allOverShirtsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[5]')
+
+    allOverShirtsButton.click()
 
 def waitForPageLoad():
     time.sleep(1)
