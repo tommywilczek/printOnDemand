@@ -11,6 +11,10 @@ def main():
 
     loginToPrintful(printfulPassword)
 
+    browser.get("https://www.printful.com/dashboard/store")
+
+    browser.find_elements_by_xpath("//*[contains(text(), 'Add')]")
+
 def loginToPrintful(printfulPassword):
     browser.get("https://www.printful.com/auth/login")
 
