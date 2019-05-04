@@ -70,15 +70,6 @@ def createAllOverPrintMensAthleticTShirt(colorName):
 
     waitForPageLoad()
 
-    modal = browser.find_element_by_xpath('//*[@class="modal-body"]')
-
-
-    # modal.send_keys(Keys.END)
-
-    # designTab = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
-
-    # designTab.click()
-
     whiteRadioButton = browser.find_element_by_xpath(".//input[@type='radio' and @value='white']")
 
     whiteRadioButton.send_keys(Keys.SPACE) # click radio button
@@ -94,6 +85,14 @@ def createAllOverPrintMensAthleticTShirt(colorName):
     colorSearch.send_keys(colorName)
 
     colorSearch.send_keys(Keys.ENTER)
+
+    waitForPageLoad()
+
+    frontColorChooserButton = browser.find_element_by_xpath('//*[@title="Yellow-Orange-Red.png"]')
+
+    frontColorChooserButton.click()
+
+# todo: choose color function, break out into choose front, back, left sleeve, right sleeve
 
 def waitForPageLoad():
     time.sleep(1)
