@@ -26,7 +26,9 @@ def main():
 
     waitForPageLoad()
 
-    createAllOverPrintMensAthleticTShirt()
+    colorName = 'Yellow-Orange-Red'
+
+    createAllOverPrintMensAthleticTShirt(colorName)
 
 def loginToPrintful(printfulPassword):
     browser.get("https://www.printful.com/auth/login")
@@ -60,7 +62,7 @@ def navigateToMensAllOverShirts():
 
     allOverShirtsButton.click()
 
-def createAllOverPrintMensAthleticTShirt():
+def createAllOverPrintMensAthleticTShirt(colorName):
     # Prerequisite: navigateToMensAllOverShirts
     allOverPrintMensAthleticTShirtButton = browser.find_element_by_xpath("//*[contains(text(), 'Athletic T-Shirt')]")
 
@@ -84,6 +86,14 @@ def createAllOverPrintMensAthleticTShirt():
     uploadFileButton = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
 
     uploadFileButton.click()
+
+    waitForPageLoad()
+
+    colorSearch = browser.find_element_by_xpath('//*[@id="library-search-1_tag"]')
+
+    colorSearch.send_keys(colorName)
+
+    colorSearch.send_keys(Keys.ENTER)
 
 def waitForPageLoad():
     time.sleep(1)
