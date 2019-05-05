@@ -80,6 +80,17 @@ def createAllOverPrintMensAthleticTShirt(colorName):
 
     chooseBackOfItemColor(colorName)
 
+    waitForPageLoad()
+
+    chooseRightSleeveColor(colorName)
+
+    waitForPageLoad()
+
+    chooseLeftSleeveColor(colorName)
+
+    proceedToDescription()
+
+
 
 def chooseBackOfItemColor(colorName):
     backOfItemTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
@@ -87,6 +98,20 @@ def chooseBackOfItemColor(colorName):
     backOfItemTab.click()
 
     waitForPageLoad()
+
+    chooseColor(colorName + '_mirror')
+
+def chooseRightSleeveColor(colorName):
+    rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[3]/a/span')
+
+    rightSleeveTab.click()
+
+    chooseColor(colorName + '_mirror')
+
+def chooseLeftSleeveColor(colorName):
+    rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[4]/a/span')
+
+    rightSleeveTab.click()
 
     chooseColor(colorName + '_mirror')
 
@@ -110,7 +135,14 @@ def chooseColor(colorName):
 
     frontColorChooserButton.click()
 
-# todo: choose color function, break out into choose front, back, left sleeve, right sleeve
+def proceedToDescription():
+    proceedToMockupsButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to mockups')]")
+
+    proceedToMockupsButton.click()
+
+    proceedToDescriptionButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to description')]")
+
+    proceedToDescriptionButton.click()
 
 def waitForPageLoad():
     time.sleep(1)
