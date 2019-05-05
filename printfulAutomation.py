@@ -88,7 +88,9 @@ def createAllOverPrintMensAthleticTShirt(colorName):
 
     chooseLeftSleeveColor(colorName)
 
-    proceedToDescription()
+    waitForPageLoad()
+
+    makeProductDescription(colorName)
 
 
 
@@ -135,7 +137,7 @@ def chooseColor(colorName):
 
     frontColorChooserButton.click()
 
-def proceedToDescription():
+def makeProductDescription(colorName):
     proceedToMockupsButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to mockups')]")
 
     proceedToMockupsButton.click()
@@ -143,6 +145,15 @@ def proceedToDescription():
     proceedToDescriptionButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to description')]")
 
     proceedToDescriptionButton.click()
+
+    lookupProductKeywords('tshirt')
+
+    productNameField = browser.find_element_by_class_name('form-control')
+
+    productNameField.send_keys('HELLO')
+
+def lookupProductKeywords(productType):
+    #todo: mens/womens/unisex? perhaps pass in a value with default type of none
 
 def waitForPageLoad():
     time.sleep(1)
