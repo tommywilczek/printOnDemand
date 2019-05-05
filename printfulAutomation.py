@@ -5,6 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import configparser
 
 import keywordLookup
+import itemClasses
 
 parser = configparser.ConfigParser()
 
@@ -67,21 +68,9 @@ def navigateToMensAllOverShirts():
 def createAllOverPrintMensAthleticTShirt(colorName):
     # Prerequisite: navigateToMensAllOverShirts
 
-    # TODO: Create a class of products with each of these as attributes, so all you have to do is initialize them
-
-    productStyle = 'Athletic T-Shirt'
-
-    productType = 'shirt'
-
-    gender = 'Mens'
-
-    # modal = browser.find_element_by_xpath('//*[@id="modal-1"]')
+    newShirt = itemClasses.shirt('Athletic T-Shirt', 'shirt', colorName, 'Mens')
 
     allOverPrintMensAthleticTShirtButton = browser.find_elements_by_xpath("//*[contains(text(), 'Athletic T-Shirt')]")[-1] #last one in the ist AKA theone in the modal
-
-    # allOverPrintMensAthleticTShirtButton.send_keys(Keys.SPACE)
-
-    print('IS DISPLAYED',allOverPrintMensAthleticTShirtButton.is_displayed())
 
     allOverPrintMensAthleticTShirtButton.click()
 
@@ -91,27 +80,27 @@ def createAllOverPrintMensAthleticTShirt(colorName):
 
     whiteRadioButton.send_keys(Keys.SPACE) # click radio button
 
-    chooseColor(colorName)
+    chooseColor(newShirt.colorName)
 
     waitForPageLoad()
 
-    chooseBackOfItemColor(colorName)
+    chooseBackOfItemColor(newShirt)
 
     waitForPageLoad()
 
-    chooseRightSleeveColor(colorName)
+    chooseRightSleeveColor(newShirt)
 
     waitForPageLoad()
 
-    chooseLeftSleeveColor(colorName)
+    chooseLeftSleeveColor(newShirt)
 
     waitForPageLoad()
 
-    proceedToProductDescription(colorName)
+    proceedToProductDescription()
 
     waitForPageLoad()
 
-    createProductDescription(productType, productStyle, colorName, gender)
+    createProductDescription(newShirt)
 
     proceedToPricingButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to pricing')]")
 
@@ -125,28 +114,28 @@ def createAllOverPrintMensAthleticTShirt(colorName):
 
     submitItemButton.click()
 
-def chooseBackOfItemColor(colorName):
+def chooseBackOfItemColor(newShirt):
     backOfItemTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
 
     backOfItemTab.click()
 
     waitForPageLoad()
 
-    chooseColor(colorName + '_mirror')
+    chooseColor(newShirt.colorName + '_mirror')
 
-def chooseRightSleeveColor(colorName):
+def chooseRightSleeveColor(newShirt):
     rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[3]/a/span')
 
     rightSleeveTab.click()
 
-    chooseColor(colorName + '_mirror')
+    chooseColor(newShirt.colorName + '_mirror')
 
-def chooseLeftSleeveColor(colorName):
+def chooseLeftSleeveColor(newShirt):
     rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[4]/a/span')
 
     rightSleeveTab.click()
 
-    chooseColor(colorName + '_mirror')
+    chooseColor(newShirt.colorName + '_mirror')
 
 
 def chooseColor(colorName):
@@ -168,7 +157,7 @@ def chooseColor(colorName):
 
     frontColorChooserButton.click()
 
-def proceedToProductDescription(colorName):
+def proceedToProductDescription():
     proceedToMockupsButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to mockups')]")
 
     proceedToMockupsButton.click()
@@ -178,8 +167,8 @@ def proceedToProductDescription(colorName):
     proceedToDescriptionButton.click()
 
 
-def createProductDescription(productType, productStyle, colorName, gender=None):
-    productDescription = generateProductDescription(productType, productStyle, colorName, gender)
+def createProductDescription(newShirt):
+    productDescription = generateProductDescription(newShirt)
 
     productNameField = browser.find_element_by_class_name('form-control')
 
@@ -189,20 +178,20 @@ def createProductDescription(productType, productStyle, colorName, gender=None):
 
     productNameField.send_keys(Keys.ENTER)
 
-def generateProductDescription(productType, productStyle, colorName, gender=None):
+def generateProductDescription(newShirt):
     #todo: mens/womens/unisex? perhaps pass in a value with default type of none
-    if gender == 'unisex':
+    if newShirt.gender == 'unisex':
         genderDescription = 'Mens Womens Unisex'
-    elif gender == None:
+    elif newShirt.gender == None:
         genderDescription = ''
     else:
-        genderDescription = gender
+        genderDescription = newShirt.gender
 
-    colorName = colorName.replace('-', ' ')
+    colorName = newShirt.colorName.replace('-', ' ')
 
-    productKeywords = keywordLookup.keywordDict[productType]
+    productKeywords = keywordLookup.keywordDict[newShirt.productType]
 
-    return colorName, ' ' ,productStyle, ' ' ,productKeywords, ' ' ,genderDescription 
+    return newShirt.colorName, ' ' , newShirt.productStyle, ' ' ,productKeywords, ' ', genderDescription 
 
 def upchargeByPercentage():
     # Must be in 'pricing' stage of create product
