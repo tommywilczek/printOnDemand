@@ -4,6 +4,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import configparser
 
+import keywordLookup
+
 parser = configparser.ConfigParser()
 
 parser.read('config.ini')
@@ -64,6 +66,15 @@ def navigateToMensAllOverShirts():
 
 def createAllOverPrintMensAthleticTShirt(colorName):
     # Prerequisite: navigateToMensAllOverShirts
+
+    # TODO: Create a class of products with each of these as attributes, so all you have to do is initialize them
+
+    productStyle = 'Athletic T-Shirt'
+
+    productType = 'shirt'
+
+    gender = 'Mens'
+
     allOverPrintMensAthleticTShirtButton = browser.find_element_by_xpath("//*[contains(text(), 'Athletic T-Shirt')]")
 
     allOverPrintMensAthleticTShirtButton.click()
@@ -90,9 +101,11 @@ def createAllOverPrintMensAthleticTShirt(colorName):
 
     waitForPageLoad()
 
-    makeProductDescription(colorName)
+    proceedToProductDescription(colorName)
 
+    waitForPageLoad()
 
+    createProductDescription(productType, productStyle, colorName, gender)
 
 def chooseBackOfItemColor(colorName):
     backOfItemTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
@@ -137,7 +150,7 @@ def chooseColor(colorName):
 
     frontColorChooserButton.click()
 
-def makeProductDescription(colorName):
+def proceedToProductDescription(colorName):
     proceedToMockupsButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to mockups')]")
 
     proceedToMockupsButton.click()
@@ -146,16 +159,36 @@ def makeProductDescription(colorName):
 
     proceedToDescriptionButton.click()
 
-    lookupProductKeywords('tshirt')
+
+def createProductDescription(productType, productStyle, colorName, gender=None):
+    productDescription = generateProductDescription(productType, productStyle, colorName, gender)
 
     productNameField = browser.find_element_by_class_name('form-control')
 
-    productNameField.send_keys('HELLO')
+    productNameField.clear()
 
-def lookupProductKeywords(productType):
+    productNameField.send_keys(productDescription)
+
+    productNameField.send_keys(Keys.ENTER)
+
+def generateProductDescription(productType, productStyle, colorName, gender=None):
     #todo: mens/womens/unisex? perhaps pass in a value with default type of none
+    if gender == 'unisex':
+        genderDescription = 'Mens Womens Unisex'
+    elif gender == None:
+        genderDescription = ''
+    else:
+        genderDescription = gender
+
+    colorName = colorName.replace('-', ' ')
+
+    productKeywords = keywordLookup.keywordDict[productType]
+
+    return colorName, ' ' ,productStyle, ' ' ,productKeywords, ' ' ,genderDescription 
 
 def waitForPageLoad():
     time.sleep(1)
 
 main()
+
+generateProductDescription('shirt', 'Yellow-Orange-Red', 'Mens')

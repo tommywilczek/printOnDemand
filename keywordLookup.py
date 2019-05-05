@@ -1,7 +1,7 @@
 keywordDict = {
-    'shirt': ['Pride'],
-    'sweatshirt': ['Crewneck'],
-    'leggings': ['Workout', 'Compression'],
+    'shirt': 'Pride',
+    'sweatshirt': 'Crewneck',
+    'leggings': 'Workout Compression',
     'dress': 'Cocktail Summer tshirt',
     'bikini': 'Two Piece',
     'sportsBra': 'High Impact',
