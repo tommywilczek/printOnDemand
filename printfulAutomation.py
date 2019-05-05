@@ -75,7 +75,13 @@ def createAllOverPrintMensAthleticTShirt(colorName):
 
     gender = 'Mens'
 
-    allOverPrintMensAthleticTShirtButton = browser.find_element_by_xpath("//*[contains(text(), 'Athletic T-Shirt')]")
+    # modal = browser.find_element_by_xpath('//*[@id="modal-1"]')
+
+    allOverPrintMensAthleticTShirtButton = browser.find_elements_by_xpath("//*[contains(text(), 'Athletic T-Shirt')]")[-1] #last one in the ist AKA theone in the modal
+
+    # allOverPrintMensAthleticTShirtButton.send_keys(Keys.SPACE)
+
+    print('IS DISPLAYED',allOverPrintMensAthleticTShirtButton.is_displayed())
 
     allOverPrintMensAthleticTShirtButton.click()
 
@@ -213,4 +219,6 @@ def upchargeByPercentage():
 def waitForPageLoad():
     time.sleep(1)
 
-main()
+
+if __name__ == "__main__":
+    main()
