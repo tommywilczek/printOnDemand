@@ -6,22 +6,38 @@ import configparser
 
 import keywordLookup
 import itemClasses
+import helperFunctions
 
-parser = configparser.ConfigParser()
 
-parser.read('config.ini')
-
-printfulPassword = parser.get('passwords', 'printfulPassword')
-
-browser = webdriver.Chrome('/Users/tommywilczek/Documents/Projects/chromedriver')
 
 def main():
 
-    loginToPrintful(printfulPassword)
+    browser = webdriver.Chrome('/Users/tommywilczek/Documents/Projects/chromedriver')
+    print("just made original Browser...")
+    time.sleep(2)
+
+
+    navigationFunctions = helperFunctions.NavigationFunctions()
+
+    print("just made navigationFunctinos...")
+    time.sleep(2)
+
+
+    navigationFunctions.loginToPrintful(browser)
+
+    print("just logged in to printful...")
+    time.sleep(2)
+
+    testMethod = helperFunctions.newClass()
+
+    print("just made testMethod...")
+    time.sleep(2)
+
+    testMethod.myTestMethod(browser)
 
     waitForPageLoad()
 
-    goToChooseProduct()
+    navigationFunctions.goToChooseProduct(browser)
 
     waitForPageLoad()
 
@@ -32,28 +48,6 @@ def main():
     colorName = 'Yellow-Orange-Red'
 
     createAllOverPrintMensAthleticTShirt(colorName)
-
-def loginToPrintful(printfulPassword):
-    browser.get("https://www.printful.com/auth/login")
-
-    emailField = browser.find_element_by_id("customer-email")
-
-    passwordField = browser.find_element_by_id("customer-password")
-
-    emailField.send_keys("tommywilczek@gmail.com")
-
-    passwordField.send_keys(printfulPassword, Keys.ENTER)
-
-def goToChooseProduct():
-    patternPopStoreId = '1354143'
-    
-    browser.get("https://www.printful.com/dashboard/sync?store=" + patternPopStoreId)
-    
-    waitForPageLoad()
-
-    addProductButton = browser.find_element_by_xpath("//*[text()='Add product']")
-
-    addProductButton.click()
 
 def navigateToMensAllOverShirts():
     # Prerequisite: goToChooseProduct
@@ -137,7 +131,6 @@ def chooseLeftSleeveColor(newShirt):
 
     chooseColor(newShirt.colorName + '_mirror')
 
-
 def chooseColor(colorName):
     uploadFileButton = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
 
@@ -166,7 +159,6 @@ def proceedToProductDescription():
 
     proceedToDescriptionButton.click()
 
-
 def createProductDescription(newShirt):
     productDescription = generateProductDescription(newShirt)
 
@@ -179,7 +171,6 @@ def createProductDescription(newShirt):
     productNameField.send_keys(Keys.ENTER)
 
 def generateProductDescription(newShirt):
-    #todo: mens/womens/unisex? perhaps pass in a value with default type of none
     if newShirt.gender == 'unisex':
         genderDescription = 'Mens Womens Unisex'
     elif newShirt.gender == None:
@@ -207,7 +198,6 @@ def upchargeByPercentage():
 
 def waitForPageLoad():
     time.sleep(1)
-
 
 if __name__ == "__main__":
     main()
