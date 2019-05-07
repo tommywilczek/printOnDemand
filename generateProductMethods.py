@@ -21,9 +21,7 @@ class generateProductMethods():
 
         newShirt = itemClasses.shirt(shirtType, 'shirt', colorName, 'Mens')
 
-        whiteRadioButton = browser.find_element_by_xpath(".//input[@type='radio' and @value='white']")
-
-        whiteRadioButton.send_keys(Keys.SPACE) # click radio button
+        generateProductMethods.clickColorRadioButton(self, browser, 'white')
 
         generateProductMethods.chooseColor(self, browser, newShirt.colorName)
 
@@ -58,6 +56,11 @@ class generateProductMethods():
         #########################
         # submitItemButton.click()
         printfulAutomation.waitForPageLoad()
+
+    def clickColorRadioButton(self, browser, color):
+        whiteRadioButton = browser.find_element_by_xpath(".//input[@type='radio' and @value='%s']" % color)
+
+        whiteRadioButton.send_keys(Keys.SPACE) # click radio button
 
 
     def chooseBackOfItemColor(self, browser, newShirt):
