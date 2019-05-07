@@ -10,28 +10,26 @@ import itemClasses
 
 class generateProductMethods():
 
-    def createSleevedShirt(self, browser, shirtType, colorName):
+    def createSleevedShirt(self, browser, newItem):
         # Prerequisite: navigateToMensAllOverShirts
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
-        navigationFunctionsObject.navigateToCreateProductStyle(browser, shirtType)
+        navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
 
         printfulAutomation.waitForPageLoad()
-
-        newShirt = itemClasses.shirt(shirtType, 'shirt', colorName, 'Mens')
 
         generateProductMethods.clickColorRadioButton(self, browser, 'white')
 
-        generateProductMethods.chooseColor(self, browser, newShirt.colorName)
+        generateProductMethods.chooseColor(self, browser, newItem.colorName)
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseBackOfItemColor(self, browser, newShirt)
+        generateProductMethods.chooseBackOfItemColor(self, browser, newItem)
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseSleeveColors(self, browser, newShirt)
+        generateProductMethods.chooseSleeveColors(self, browser, newItem)
 
         printfulAutomation.waitForPageLoad()
 
@@ -39,7 +37,7 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
         
-        generateProductMethods.createProductDescription(self, browser, newShirt)
+        generateProductMethods.createProductDescription(self, browser, newItem)
 
         navigationFunctionsObject.proceedToPricing(browser)
 
@@ -50,7 +48,7 @@ class generateProductMethods():
         submitItemButton = browser.find_element_by_xpath("//*[contains(text(), 'Submit to store')]")
 
         ########## For Testing
-        print('Creating product of color:', colorName)
+        print('Creating product of color:', newItem.colorName)
         navigationFunctionsObject.goToChooseProduct(browser)
 
         #########################
@@ -117,19 +115,21 @@ class generateProductMethods():
 
         productNameField.send_keys(Keys.ENTER)
 
-    def generateProductDescription(self, browser, newShirt):
-        if newShirt.gender == 'unisex':
+    def generateProductDescription(self, browser, newItem):
+        if newItem.gender == 'unisex':
             genderDescription = 'Mens Womens Unisex'
-        elif newShirt.gender == None:
+        elif newItem.gender == None:
             genderDescription = ''
         else:
-            genderDescription = newShirt.gender
+            genderDescription = newItem.gender
 
-        colorName = newShirt.colorName.replace('-', ' ')
+        colorName = newItem.colorName.replace('-', ' ')
 
-        productKeywords = keywordLookup.keywordDict[newShirt.productType]
+        productKeywords = keywordLookup.keywordDict[newItem.productType]
 
-        return newShirt.colorName, ' ' , newShirt.productStyle, ' ' ,productKeywords, ' ', genderDescription 
+        companyName = 'Pattern Pop'
+
+        return companyName, ' ', colorName, ' ' , newItem.productStyle, ' ' ,productKeywords, ' ', genderDescription 
 
     def upchargeByPercentage(self, browser, ):
         # Must be in 'pricing' stage of create product

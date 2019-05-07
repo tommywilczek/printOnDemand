@@ -1,8 +1,8 @@
-class shirt():
-    def __init__(self, productStyle, productType, colorName, gender=None):
+class item():
+    def __init__(self, productStyle, productCategory, colorName, gender=None):
         self.productStyle = productStyle
 
-        self.productType = productType
+        self.productType = productCategory
 
         self.colorName = colorName
 

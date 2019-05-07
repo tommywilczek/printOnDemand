@@ -47,7 +47,9 @@ def main():
 
         color = 'Yellow-Orange-Red'
 
-        productMethodsObject.createSleevedShirt(browser, shirtType, color)
+        newShirt = itemClasses.item(shirtType, 'shirt', color, 'Mens')
+
+        productMethodsObject.createSleevedShirt(browser, newShirt)
 
     # for color in trianglifyColorList:
     #     navigationFunctionsObject.navigateToMensAllOverShirts(browser)
