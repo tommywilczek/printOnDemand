@@ -46,6 +46,13 @@ class NavigationFunctions():
 
         allOverShirtsButton.click()
 
+    def navigateToCreateProductStyle(self, browser, productStyle):
+        # Prerequisite: Must be in a category, like navigateToMensAllOverShirts
+        productStyleButton = browser.find_elements_by_xpath("//*[contains(text(), '%s')]" % productStyle)[-1] #last one in the ist AKA theone in the modal
+
+        productStyleButton.click()
+
+
     def proceedToProductDescription(self, browser):
         proceedToMockupsButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to mockups')]")
 

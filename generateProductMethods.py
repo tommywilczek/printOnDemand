@@ -15,13 +15,11 @@ class generateProductMethods():
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
-        newShirt = itemClasses.shirt(shirtType, 'shirt', colorName, 'Mens')
-
-        allOverPrintMensAthleticTShirtButton = browser.find_elements_by_xpath("//*[contains(text(), '%s')]" % shirtType)[-1] #last one in the ist AKA theone in the modal
-
-        allOverPrintMensAthleticTShirtButton.click()
+        navigationFunctionsObject.navigateToCreateProductStyle(browser, shirtType)
 
         printfulAutomation.waitForPageLoad()
+
+        newShirt = itemClasses.shirt(shirtType, 'shirt', colorName, 'Mens')
 
         whiteRadioButton = browser.find_element_by_xpath(".//input[@type='radio' and @value='white']")
 
@@ -35,11 +33,7 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseRightSleeveColor(self, browser, newShirt)
-
-        printfulAutomation.waitForPageLoad()
-
-        generateProductMethods.chooseLeftSleeveColor(self, browser, newShirt)
+        generateProductMethods.chooseSleeveColors(self, browser, newShirt)
 
         printfulAutomation.waitForPageLoad()
 
@@ -75,14 +69,15 @@ class generateProductMethods():
 
         generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
 
-    def chooseRightSleeveColor(self, browser, newShirt):
+    def chooseSleeveColors(self, browser, newShirt):
         rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[3]/a/span')
 
         rightSleeveTab.click()
 
         generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
 
-    def chooseLeftSleeveColor(self, browser, newShirt):
+        printfulAutomation.waitForPageLoad()
+
         rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[4]/a/span')
 
         rightSleeveTab.click()
