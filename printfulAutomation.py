@@ -7,8 +7,7 @@ import configparser
 import itemClasses
 import navigationFunctions
 import generateProductMethods
-
-
+import trianglifyColors
 
 def main():
 
@@ -26,13 +25,14 @@ def main():
 
     waitForPageLoad()
 
-    navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+    trianglifyColorList = trianglifyColors.trianglifyColorDict
 
-    waitForPageLoad()
+    for color in trianglifyColorList:
+        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-    colorName = 'Yellow-Orange-Red'
+        waitForPageLoad()
 
-    productMethodsObject.createAllOverPrintMensAthleticTShirt(browser, colorName)
+        productMethodsObject.createAllOverPrintMensAthleticTShirt(browser, color)
 
 
 

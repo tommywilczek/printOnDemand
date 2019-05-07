@@ -62,8 +62,10 @@ class generateProductMethods():
         ########## For Testing
         print('Creating product of color:', colorName)
         navigationFunctionsObject.goToChooseProduct(browser)
+
         #########################
         # submitItemButton.click()
+        printfulAutomation.waitForPageLoad()
 
 
     def chooseBackOfItemColor(self, browser, newShirt):
@@ -96,7 +98,7 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-        colorSearch = browser.find_element_by_xpath("//*[//*[contains(@id, 'search')]]")
+        colorSearch = browser.find_elements_by_xpath("//input[contains(@id,'library-search')]")[-1]
 
         colorSearch.send_keys(colorName)
 
