@@ -10,14 +10,14 @@ import itemClasses
 
 class generateProductMethods():
 
-    def createAllOverPrintMensAthleticTShirt(self, browser, colorName):
+    def createSleevedShirt(self, browser, shirtType, colorName):
         # Prerequisite: navigateToMensAllOverShirts
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
-        newShirt = itemClasses.shirt('Athletic T-Shirt', 'shirt', colorName, 'Mens')
+        newShirt = itemClasses.shirt(shirtType, 'shirt', colorName, 'Mens')
 
-        allOverPrintMensAthleticTShirtButton = browser.find_elements_by_xpath("//*[contains(text(), 'Athletic T-Shirt')]")[-1] #last one in the ist AKA theone in the modal
+        allOverPrintMensAthleticTShirtButton = browser.find_elements_by_xpath("//*[contains(text(), '%s')]" % shirtType)[-1] #last one in the ist AKA theone in the modal
 
         allOverPrintMensAthleticTShirtButton.click()
 

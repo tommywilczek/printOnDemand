@@ -27,12 +27,36 @@ def main():
 
     trianglifyColorList = trianglifyColors.trianglifyColorDict
 
-    for color in trianglifyColorList:
+    sleevedShirtTypeList = [
+        'Athletic T-Shirt',
+        'Crew Neck T-Shirt',
+        'Rash Guard',
+        'V-Neck T-Shirt'
+    ]
+
+    sleevelessShirtTypeList = [
+        'Tank Top',
+        'Sublimation T-Shirt',
+        'Sublimation Tank'
+    ]
+
+    for shirtType in sleevedShirtTypeList:
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
         waitForPageLoad()
 
-        productMethodsObject.createAllOverPrintMensAthleticTShirt(browser, color)
+        color = 'Yellow-Orange-Red'
+
+        productMethodsObject.createSleevedShirt(browser, shirtType, color)
+
+    # for color in trianglifyColorList:
+    #     navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+
+    #     waitForPageLoad()
+
+    #     shirtType = 'Athletic T-Shirt'
+
+    #     productMethodsObject.createSleevedShirt(browser, shirtType, color)
 
 
 
