@@ -49,9 +49,7 @@ class generateProductMethods():
         
         generateProductMethods.createProductDescription(self, browser, newShirt)
 
-        proceedToPricingButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to pricing')]")
-
-        proceedToPricingButton.click()
+        navigationFunctionsObject.proceedToPricing(browser)
 
         printfulAutomation.waitForPageLoad()
 

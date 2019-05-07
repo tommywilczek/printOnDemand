@@ -55,3 +55,9 @@ class NavigationFunctions():
 
         proceedToDescriptionButton.click()
 
+    def proceedToPricing(self, browser):
+        proceedToPricingButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to pricing')]")
+
+        proceedToPricingButton.click()
+
+
