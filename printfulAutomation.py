@@ -28,29 +28,10 @@ def main():
 
     trianglifyColorList = trianglifyColors.trianglifyColorDict
 
-    mensSleevedShirtTypeList = [
-        'Athletic T-Shirt',
-        'Crew Neck T-Shirt',
-        'Rash Guard',
-        'V-Neck T-Shirt'
-    ]
+    productMethodsObject.createAllMensSleevedShirts(browser)
 
-    mensSleevelessShirtTypeList = [
-        'Tank Top',
-        'Sublimation T-Shirt',
-        'Sublimation Tank'
-    ]
+    productMethodsObject.createAllMensSleevelessShirts(browser)
 
-    for shirtType in mensSleevelessShirtTypeList:
-        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
-
-        waitForPageLoad()
-
-        color = 'Yellow-Orange-Red'
-
-        newShirt = itemClasses.Shirt(shirtType, 'shirt', color, False, gender='Mens')
-
-        productMethodsObject.createShirt(browser, newShirt)
 
     # for color in trianglifyColorList:
     #     navigationFunctionsObject.navigateToMensAllOverShirts(browser)

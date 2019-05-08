@@ -11,6 +11,51 @@ import itemClasses
 
 class generateProductMethods():
 
+    def createAllMensSleevedShirts(self, browser):
+
+        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+        mensSleevedShirtTypeList = [
+            # 'Athletic T-Shirt',
+            # 'Crew Neck T-Shirt',
+            # 'Rash Guard',
+            'V-Neck T-Shirt'
+        ]
+
+        for shirtType in mensSleevedShirtTypeList:
+            navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            color = 'Yellow-Orange-Red'
+
+            newShirt = itemClasses.Shirt(shirtType, 'shirt', color, True, gender='Mens')
+
+            generateProductMethods.createShirt(self, browser, newShirt)
+
+    def createAllMensSleevelessShirts(self, browser):
+
+        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+
+        mensSleevelessShirtTypeList = [
+            'Tank Top',
+            'Sublimation T-Shirt',
+            'Sublimation Tank'
+        ]
+
+        for shirtType in mensSleevelessShirtTypeList:
+            navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            color = 'Yellow-Orange-Red'
+
+            newShirt = itemClasses.Shirt(shirtType, 'shirt', color, False, gender='Mens')
+
+            generateProductMethods.createShirt(self, browser, newShirt)
+
+
     def createShirt(self, browser, newShirt):
         # Prerequisite: navigateToMensAllOverShirts
 
@@ -95,9 +140,6 @@ class generateProductMethods():
 
     def chooseColor(self, browser, colorName):
         uploadFileButton = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
-
-        # actions = ActionChains(browser)
-        # actions.move_to_element(uploadFileButton).perform()
 
         browser.execute_script("arguments[0].scrollIntoView();", uploadFileButton)
 
