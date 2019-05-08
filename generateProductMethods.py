@@ -11,14 +11,14 @@ import itemClasses
 
 class generateProductMethods():
 
-    def createAllMensSleevedShirts(self, browser):
+    def createAllMensSleevedShirts(self, browser, color):
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
         mensSleevedShirtTypeList = [
-            # 'Athletic T-Shirt',
-            # 'Crew Neck T-Shirt',
-            # 'Rash Guard',
+            'Athletic T-Shirt',
+            'Crew Neck T-Shirt',
+            'Rash Guard',
             'V-Neck T-Shirt'
         ]
 
@@ -27,13 +27,11 @@ class generateProductMethods():
 
             printfulAutomation.waitForPageLoad()
 
-            color = 'Yellow-Orange-Red'
-
             newShirt = itemClasses.Shirt(shirtType, 'shirt', color, True, gender='Mens')
 
             generateProductMethods.createShirt(self, browser, newShirt)
 
-    def createAllMensSleevelessShirts(self, browser):
+    def createAllMensSleevelessShirts(self, browser, color):
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
@@ -48,8 +46,6 @@ class generateProductMethods():
             navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
             printfulAutomation.waitForPageLoad()
-
-            color = 'Yellow-Orange-Red'
 
             newShirt = itemClasses.Shirt(shirtType, 'shirt', color, False, gender='Mens')
 
