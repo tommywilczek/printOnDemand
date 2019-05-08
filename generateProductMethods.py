@@ -11,43 +11,19 @@ import itemClasses
 
 class generateProductMethods():
 
-    def createAllMensSleevedShirts(self, browser, color):
+    def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, genderParameter):
 
-        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+        for shirtType in sleevedShirtTypeList:
 
-        mensSleevedShirtTypeList = [
-            'Athletic T-Shirt',
-            'Crew Neck T-Shirt',
-            'Rash Guard',
-            'V-Neck T-Shirt'
-        ]
-
-        for shirtType in mensSleevedShirtTypeList:
-            navigationFunctionsObject.navigateToMensAllOverShirts(browser)
-
-            printfulAutomation.waitForPageLoad()
-
-            newShirt = itemClasses.Shirt(shirtType, 'shirt', color, True, gender='Mens')
+            newShirt = itemClasses.Shirt(shirtType, 'shirt', color, True, gender=genderParameter)
 
             generateProductMethods.createShirt(self, browser, newShirt)
 
-    def createAllMensSleevelessShirts(self, browser, color):
+    def createAllSleevelessShirts(self, browser, sleevelessShirtTypeList, color, genderParameter):
 
-        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+        for shirtType in sleevelessShirtTypeList:
 
-
-        mensSleevelessShirtTypeList = [
-            'Tank Top',
-            'Sublimation T-Shirt',
-            'Sublimation Tank'
-        ]
-
-        for shirtType in mensSleevelessShirtTypeList:
-            navigationFunctionsObject.navigateToMensAllOverShirts(browser)
-
-            printfulAutomation.waitForPageLoad()
-
-            newShirt = itemClasses.Shirt(shirtType, 'shirt', color, False, gender='Mens')
+            newShirt = itemClasses.Shirt(shirtType, 'shirt', color, False, gender=genderParameter)
 
             generateProductMethods.createShirt(self, browser, newShirt)
 

@@ -6,6 +6,7 @@ import configparser
 from pprint import pprint
 
 import itemClasses
+import itemTypeLists
 import navigationFunctions
 import generateProductMethods
 import trianglifyColors
@@ -28,10 +29,21 @@ def main():
 
     trianglifyColorList = trianglifyColors.trianglifyColorDict
 
-    for color in trianglifyColorList:
-        productMethodsObject.createAllMensSleevedShirts(browser, color)
+    mensSleevedShirtTypeList = itemTypeLists.mensSleevedShirtTypeList
+    mensSleevelessShirtTypeList = itemTypeLists.mensSleevelessShirtTypeList
 
-        productMethodsObject.createAllMensSleevelessShirts(browser, color)
+    for color in trianglifyColorList:
+        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, 'Mens')
+
+        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createAllSleevelessShirts(browser, mensSleevelessShirtTypeList, color, 'Mens')
 
 
 
