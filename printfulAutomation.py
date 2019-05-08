@@ -3,6 +3,7 @@ import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import configparser
+from pprint import pprint
 
 import itemClasses
 import navigationFunctions
@@ -27,28 +28,28 @@ def main():
 
     trianglifyColorList = trianglifyColors.trianglifyColorDict
 
-    sleevedShirtTypeList = [
+    mensSleevedShirtTypeList = [
         'Athletic T-Shirt',
         'Crew Neck T-Shirt',
         'Rash Guard',
         'V-Neck T-Shirt'
     ]
 
-    sleevelessShirtTypeList = [
+    mensSleevelessShirtTypeList = [
         'Tank Top',
         'Sublimation T-Shirt',
         'Sublimation Tank'
     ]
 
-    for shirtType in sleevedShirtTypeList:
+    for shirtType in mensSleevedShirtTypeList:
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
         waitForPageLoad()
 
         color = 'Yellow-Orange-Red'
 
-        newShirt = itemClasses.item(shirtType, 'shirt', color, 'Mens')
-
+        newShirt = itemClasses.Shirt(shirtType, 'shirt', color, True, 'Mens')
+        print('creating ', newShirt.productStyle, newShirt.productType, newShirt.colorName, 'hasSleeves:', newShirt.hasSleeves, newShirt.gender)
         productMethodsObject.createSleevedShirt(browser, newShirt)
 
     # for color in trianglifyColorList:

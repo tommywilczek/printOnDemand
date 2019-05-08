@@ -10,26 +10,26 @@ import itemClasses
 
 class generateProductMethods():
 
-    def createSleevedShirt(self, browser, newItem):
+    def createSleevedShirt(self, browser, newShirt):
         # Prerequisite: navigateToMensAllOverShirts
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
-        navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
+        navigationFunctionsObject.navigateToCreateProductStyle(browser, newShirt.productStyle)
 
         printfulAutomation.waitForPageLoad()
 
         generateProductMethods.clickColorRadioButton(self, browser, 'white')
 
-        generateProductMethods.chooseColor(self, browser, newItem.colorName)
+        generateProductMethods.chooseColor(self, browser, newShirt.colorName)
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseBackOfItemColor(self, browser, newItem)
+        generateProductMethods.chooseBackOfItemColor(self, browser, newShirt)
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseSleeveColors(self, browser, newItem)
+        generateProductMethods.chooseSleeveColors(self, browser, newShirt)
 
         printfulAutomation.waitForPageLoad()
 
@@ -37,7 +37,7 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
         
-        generateProductMethods.createProductDescription(self, browser, newItem)
+        generateProductMethods.createProductDescription(self, browser, newShirt)
 
         navigationFunctionsObject.proceedToPricing(browser)
 
@@ -48,7 +48,7 @@ class generateProductMethods():
         submitItemButton = browser.find_element_by_xpath("//*[contains(text(), 'Submit to store')]")
 
         ########## For Testing
-        print('Creating product of color:', newItem.colorName)
+        print('Creating product of color:', newShirt.colorName)
         navigationFunctionsObject.goToChooseProduct(browser)
 
         #########################
