@@ -41,16 +41,16 @@ def main():
         'Sublimation Tank'
     ]
 
-    for shirtType in mensSleevedShirtTypeList:
+    for shirtType in mensSleevelessShirtTypeList:
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
         waitForPageLoad()
 
         color = 'Yellow-Orange-Red'
 
-        newShirt = itemClasses.Shirt(shirtType, 'shirt', color, True, 'Mens')
-        print('creating ', newShirt.productStyle, newShirt.productType, newShirt.colorName, 'hasSleeves:', newShirt.hasSleeves, newShirt.gender)
-        productMethodsObject.createSleevedShirt(browser, newShirt)
+        newShirt = itemClasses.Shirt(shirtType, 'shirt', color, False, gender='Mens')
+
+        productMethodsObject.createShirt(browser, newShirt)
 
     # for color in trianglifyColorList:
     #     navigationFunctionsObject.navigateToMensAllOverShirts(browser)

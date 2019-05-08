@@ -2,6 +2,7 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import NoSuchElementException 
 
 import keywordLookup
 import printfulAutomation
@@ -10,7 +11,7 @@ import itemClasses
 
 class generateProductMethods():
 
-    def createSleevedShirt(self, browser, newShirt):
+    def createShirt(self, browser, newShirt):
         # Prerequisite: navigateToMensAllOverShirts
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
@@ -19,7 +20,7 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.clickColorRadioButton(self, browser, 'white')
+        generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
 
         generateProductMethods.chooseColor(self, browser, newShirt.colorName)
 
@@ -29,7 +30,8 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseSleeveColors(self, browser, newShirt)
+        if newShirt.hasSleeves:
+            generateProductMethods.chooseSleeveColors(self, browser, newShirt)
 
         printfulAutomation.waitForPageLoad()
 
@@ -45,17 +47,23 @@ class generateProductMethods():
 
         generateProductMethods.upchargeByPercentage(self, browser)
 
-        submitItemButton = browser.find_element_by_xpath("//*[contains(text(), 'Submit to store')]")
+        # navigationFunctionsObject.clickSubmitButton(browser)
 
         ########## For Testing
-        print('Creating product of color:', newShirt.colorName)
+        print('creating ', newShirt.productStyle, newShirt.productType, newShirt.colorName, 'hasSleeves:', newShirt.hasSleeves, newShirt.gender)
         navigationFunctionsObject.goToChooseProduct(browser)
 
         #########################
-        # submitItemButton.click()
+        
         printfulAutomation.waitForPageLoad()
 
-    def clickColorRadioButton(self, browser, color):
+    def clickColorRadioButtonIfAvailable(self, browser, color):
+
+        try:
+            browser.find_element_by_xpath(".//input[@type='radio' and @value='%s']" % color)
+        except NoSuchElementException:
+            return 
+
         whiteRadioButton = browser.find_element_by_xpath(".//input[@type='radio' and @value='%s']" % color)
 
         whiteRadioButton.send_keys(Keys.SPACE) # click radio button
@@ -87,6 +95,11 @@ class generateProductMethods():
 
     def chooseColor(self, browser, colorName):
         uploadFileButton = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
+
+        # actions = ActionChains(browser)
+        # actions.move_to_element(uploadFileButton).perform()
+
+        browser.execute_script("arguments[0].scrollIntoView();", uploadFileButton)
 
         uploadFileButton.click()
 

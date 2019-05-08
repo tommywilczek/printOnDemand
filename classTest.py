@@ -1,7 +1,7 @@
 import itemClasses
 from pprint import pprint
 
-newItem = itemClasses.item("prodStyle", "prodType", "color")
+newItem = itemClasses.item("prodStyle", "prodType", "color", gender='Mens')
 
 newShirt = itemClasses.Shirt("prodStyle", "prodType", "color", True, gender='Mens')
 

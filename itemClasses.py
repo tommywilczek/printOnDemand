@@ -10,5 +10,5 @@ class item():
 
 class Shirt(item):
     def __init__(self, productStyle, productCategory, colorName, hasSleeves, gender=None):
-        item.__init__(self, productStyle, productCategory, colorName, gender=None)
+        item.__init__(self, productStyle, productCategory, colorName, gender)
         self.hasSleeves = hasSleeves

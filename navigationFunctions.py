@@ -67,4 +67,10 @@ class NavigationFunctions():
 
         proceedToPricingButton.click()
 
+    def clickSubmitButton(self, browser):
+        submitItemButton = browser.find_element_by_xpath("//*[contains(text(), 'Submit to store')]")
+
+        submitItemButton.click()
+
+
 
