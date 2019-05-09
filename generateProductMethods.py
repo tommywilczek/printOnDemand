@@ -13,16 +13,18 @@ class generateProductMethods():
 
     def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, genderParameter):
 
-        print('In create all sleeved shirts')
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
         for index in range(len(sleevedShirtTypeList)):
 
-            print('creating shirt of index', index, 'which is', sleevedShirtTypeList[index])
-
             newShirt = itemClasses.Shirt(sleevedShirtTypeList[index], 'shirt', color, True, gender=genderParameter)
 
             generateProductMethods.createShirt(self, browser, newShirt)
+
+            navigationFunctionsObject.goToChooseProduct(browser)
+
+            printfulAutomation.waitForPageLoad()
+
 
             lastIndex = len(sleevedShirtTypeList) - 1
 
@@ -43,6 +45,10 @@ class generateProductMethods():
             newShirt = itemClasses.Shirt(sleevelessShirtTypeList[index], 'shirt', color, False, gender=genderParameter)
 
             generateProductMethods.createShirt(self, browser, newShirt)
+
+            navigationFunctionsObject.goToChooseProduct(browser)
+
+            printfulAutomation.waitForPageLoad()
 
             lastIndex = len(sleevelessShirtTypeList) - 1
 
@@ -93,13 +99,8 @@ class generateProductMethods():
 
         # navigationFunctionsObject.clickSubmitButton(browser)
 
-        ########## For Testing
         print('creating ', newShirt.productStyle, newShirt.productType, newShirt.colorName, 'hasSleeves:', newShirt.hasSleeves, newShirt.gender)
-        navigationFunctionsObject.goToChooseProduct(browser)
-
-        #########################
         
-        printfulAutomation.waitForPageLoad()
 
     def clickColorRadioButtonIfAvailable(self, browser, color):
 

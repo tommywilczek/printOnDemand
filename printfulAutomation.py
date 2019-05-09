@@ -42,12 +42,10 @@ def main():
     for color in trianglifyColorList:
 
         # Men's shirts
-        print('In Color Loop, navigating to mens all over')
+        
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
         waitForPageLoad()
-
-        print('In color loop, creating all sleeved shirts')
 
         productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, 'Mens')
 
