@@ -32,10 +32,22 @@ def main():
     mensSleevedShirtTypeList = itemTypeLists.mensSleevedShirtTypeList
     mensSleevelessShirtTypeList = itemTypeLists.mensSleevelessShirtTypeList
 
+    womensSleevedShirtTypeList = itemTypeLists.womensSleevedShirtTypeList
+    womensSleevelessShirtTypeList = itemTypeLists.womensSleevelessShirtTypeList
+    wpmensOneSidedShirtTypeList = itemTypeLists.womensOneSidedShirtTypeList
+
+
+    # womensSleevedShirtTypeList
+
     for color in trianglifyColorList:
+
+        # Men's shirts
+        print('In Color Loop, navigating to mens all over')
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
         waitForPageLoad()
+
+        print('In color loop, creating all sleeved shirts')
 
         productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, 'Mens')
 
@@ -44,6 +56,21 @@ def main():
         waitForPageLoad()
 
         productMethodsObject.createAllSleevelessShirts(browser, mensSleevelessShirtTypeList, color, 'Mens')
+
+        # Women's shirts
+
+        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, 'Womens')
+
+        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createAllSleevelessShirts(browser, womensSleevelessShirtTypeList, color, 'Womens')
+
 
 
 

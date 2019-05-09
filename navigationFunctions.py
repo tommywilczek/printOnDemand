@@ -46,6 +46,16 @@ class NavigationFunctions():
 
         allOverShirtsButton.click()
 
+    def navigateToWomensAllOverShirts(self, browser):
+        # Prerequisite: goToChooseProduct
+        womensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[2]')
+
+        womensClothingButton.click()
+
+        allOverShirtsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[3]')
+
+        allOverShirtsButton.click()
+
     def navigateToCreateProductStyle(self, browser, productStyle):
         # Prerequisite: Must be in a category, like navigateToMensAllOverShirts
         productStyleButton = browser.find_elements_by_xpath("//*[contains(text(), '%s')]" % productStyle)[-1] #last one in the ist AKA theone in the modal
