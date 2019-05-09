@@ -42,18 +42,23 @@ def main():
     for color in trianglifyColorList:
 
         # Men's shirts
-        
+
+        ######################
+        # Todo: generalize create sleeve and sleeveless shirts into 
+        #       sleeve shirts and front/back items
+        #       then create a createFrontItem for rest of women's shirts and to be used for more
+
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
         waitForPageLoad()
 
-        productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, 'Mens')
+        productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, True, 'Mens')
 
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
         waitForPageLoad()
 
-        productMethodsObject.createAllSleevelessShirts(browser, mensSleevelessShirtTypeList, color, 'Mens')
+        productMethodsObject.createAllSleevelessShirts(browser, mensSleevelessShirtTypeList, color, True, 'Mens')
 
         # Women's shirts
 
@@ -61,13 +66,13 @@ def main():
 
         waitForPageLoad()
 
-        productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, 'Womens')
+        productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
 
         navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
         waitForPageLoad()
 
-        productMethodsObject.createAllSleevelessShirts(browser, womensSleevelessShirtTypeList, color, 'Womens')
+        productMethodsObject.createAllSleevelessShirts(browser, womensSleevelessShirtTypeList, color, True, 'Womens')
 
 
 

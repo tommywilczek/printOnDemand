@@ -11,15 +11,15 @@ import itemClasses
 
 class generateProductMethods():
 
-    def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, genderParameter):
+    def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, hasBack, genderParameter):
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
         for index in range(len(sleevedShirtTypeList)):
 
-            newShirt = itemClasses.Shirt(sleevedShirtTypeList[index], 'shirt', color, True, gender=genderParameter)
+            newShirt = itemClasses.Shirt(sleevedShirtTypeList[index], 'shirt', color, True, True, gender=genderParameter)
 
-            generateProductMethods.createShirt(self, browser, newShirt)
+            generateProductMethods.createProduct(self, browser, newShirt)
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
@@ -36,21 +36,21 @@ class generateProductMethods():
             
             printfulAutomation.waitForPageLoad()
 
-    def createAllSleevelessShirts(self, browser, sleevelessShirtTypeList, color, genderParameter):
+    def createAllSleevelessShirts(self, browser, frontBackItemList, color, hasBack, genderParameter):
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
-        for index in range(len(sleevelessShirtTypeList)):
+        for index in range(len(frontBackItemList)):
+            # Should this object be created in printfulAutomation?
+            newShirt = itemClasses.Shirt(frontBackItemList[index], 'shirt', color, True, False, gender=genderParameter)
 
-            newShirt = itemClasses.Shirt(sleevelessShirtTypeList[index], 'shirt', color, False, gender=genderParameter)
-
-            generateProductMethods.createShirt(self, browser, newShirt)
+            generateProductMethods.createProduct(self, browser, newShirt)
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
             printfulAutomation.waitForPageLoad()
 
-            lastIndex = len(sleevelessShirtTypeList) - 1
+            lastIndex = len(frontBackItemList) - 1
 
             if index is not lastIndex:
                 if genderParameter == 'Mens':
@@ -61,27 +61,27 @@ class generateProductMethods():
             printfulAutomation.waitForPageLoad()
 
 
-    def createShirt(self, browser, newShirt):
+    def createProduct(self, browser, newItem):
         # Prerequisite: navigateToMensAllOverShirts
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
-        navigationFunctionsObject.navigateToCreateProductStyle(browser, newShirt.productStyle)
+        navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
 
         printfulAutomation.waitForPageLoad()
 
         generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
 
-        generateProductMethods.chooseColor(self, browser, newShirt.colorName)
+        generateProductMethods.chooseColor(self, browser, newItem.colorName)
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseBackOfItemColor(self, browser, newShirt)
+        if newItem.hasBack:
+            generateProductMethods.chooseBackOfItemColor(self, browser, newItem)
+            printfulAutomation.waitForPageLoad()
 
-        printfulAutomation.waitForPageLoad()
-
-        if newShirt.hasSleeves:
-            generateProductMethods.chooseSleeveColors(self, browser, newShirt)
+        if newItem.hasSleeves:
+            generateProductMethods.chooseSleeveColors(self, browser, newItem)
 
         printfulAutomation.waitForPageLoad()
 
@@ -89,7 +89,7 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
         
-        generateProductMethods.createProductDescription(self, browser, newShirt)
+        generateProductMethods.createProductDescription(self, browser, newItem)
 
         navigationFunctionsObject.proceedToPricing(browser)
 
@@ -99,7 +99,7 @@ class generateProductMethods():
 
         # navigationFunctionsObject.clickSubmitButton(browser)
 
-        print('creating ', newShirt.productStyle, newShirt.productType, newShirt.colorName, 'hasSleeves:', newShirt.hasSleeves, newShirt.gender)
+        print('creating ', newItem.productStyle, newItem.productType, newItem.colorName, 'hasSleeves:', newItem.hasSleeves, newItem.gender)
         
 
     def clickColorRadioButtonIfAvailable(self, browser, color):
