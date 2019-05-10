@@ -50,41 +50,47 @@ def main():
         #       sleeve shirts and front/back items
         #       then create a createFrontItem for rest of women's shirts and to be used for more
 
-        # sleeved
+        # # sleeved
 
-        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, True, 'Mens')
+        # productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, True, 'Mens')
 
-        # sleeveless
+        # # sleeveless
 
-        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createAllSleevelessShirts(browser, mensSleevelessShirtTypeList, color, True, 'Mens')
+        # productMethodsObject.createAllSleevelessShirts(browser, mensSleevelessShirtTypeList, color, True, 'Mens')
 
-        #### Women's shirts
+        # #### Women's shirts
 
-        # sleeved
+        # # sleeved
+
+        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+        # waitForPageLoad()
+
+        # productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
+
+        # # sleeveless
+
+        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+        # waitForPageLoad()
+
+        # productMethodsObject.createAllSleevelessShirts(browser, womensSleevelessShirtTypeList, color, True, 'Womens')
+
+        # just front 
 
         navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
         waitForPageLoad()
 
-        productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
-
-        # sleeveless
-
-        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
-
-        waitForPageLoad()
-
-        productMethodsObject.createAllSleevelessShirts(browser, womensSleevelessShirtTypeList, color, True, 'Womens')
-
-        # MISSING just front shirts
+        productMethodsObject.createAllSleevelessShirts(browser, womensOneSidedShirtTypeList, color, False, 'Womens')
 
         ### Unisex Sweaters
 
