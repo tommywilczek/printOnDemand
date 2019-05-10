@@ -34,19 +34,23 @@ def main():
 
     womensSleevedShirtTypeList = itemTypeLists.womensSleevedShirtTypeList
     womensSleevelessShirtTypeList = itemTypeLists.womensSleevelessShirtTypeList
-    wpmensOneSidedShirtTypeList = itemTypeLists.womensOneSidedShirtTypeList
+    womensOneSidedShirtTypeList = itemTypeLists.womensOneSidedShirtTypeList
+
+    sweatshirtTypeList = itemTypeLists.sweatshirtTypeList
 
 
     # womensSleevedShirtTypeList
 
     for color in trianglifyColorList:
 
-        # Men's shirts
+        ### Men's shirts
 
         ######################
         # Todo: generalize create sleeve and sleeveless shirts into 
         #       sleeve shirts and front/back items
         #       then create a createFrontItem for rest of women's shirts and to be used for more
+
+        # sleeved
 
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
@@ -54,13 +58,17 @@ def main():
 
         productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, True, 'Mens')
 
+        # sleeveless
+
         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
         waitForPageLoad()
 
         productMethodsObject.createAllSleevelessShirts(browser, mensSleevelessShirtTypeList, color, True, 'Mens')
 
-        # Women's shirts
+        #### Women's shirts
+
+        # sleeved
 
         navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
@@ -68,11 +76,25 @@ def main():
 
         productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
 
+        # sleeveless
+
         navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
         waitForPageLoad()
 
         productMethodsObject.createAllSleevelessShirts(browser, womensSleevelessShirtTypeList, color, True, 'Womens')
+
+        # MISSING just front shirts
+
+        ### Unisex Sweaters
+
+        navigationFunctionsObject.navigateToSweaters(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createAllSleevedShirts(browser, sweatshirtTypeList, color, True, 'Unisex')
+
+
 
 
 

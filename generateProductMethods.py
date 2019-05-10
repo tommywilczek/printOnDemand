@@ -171,8 +171,8 @@ class generateProductMethods():
         productNameField.send_keys(Keys.ENTER)
 
     def generateProductDescription(self, browser, newItem):
-        if newItem.gender == 'unisex':
-            genderDescription = 'Mens Womens Unisex'
+        if newItem.gender == 'Unisex':
+            genderDescription = 'Mens Womens' # Usually says unisex in product style
         elif newItem.gender == None:
             genderDescription = ''
         else:

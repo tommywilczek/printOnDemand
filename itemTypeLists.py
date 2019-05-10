@@ -28,3 +28,7 @@ womensOneSidedShirtTypeList = [
     'Crop Top',
     'Tank Top'
 ]
+
+sweatshirtTypeList = [
+    'Unisex Sweatshirt'
+]
