@@ -25,10 +25,10 @@ class generateProductMethods():
 
             printfulAutomation.waitForPageLoad()
 
-
             lastIndex = len(sleevedShirtTypeList) - 1
 
             if index is not lastIndex:
+                print('not last index')
                 if genderParameter == 'Mens':
                     navigationFunctionsObject.navigateToMensAllOverShirts(browser)
                 elif genderParameter == 'Womens':
@@ -36,13 +36,13 @@ class generateProductMethods():
             
             printfulAutomation.waitForPageLoad()
 
-    def createAllSleevelessShirts(self, browser, frontBackItemList, color, hasBack, genderParameter):
+    def createFrontBackItem(self, browser, productCategory, frontBackItemList, color, genderParameter):
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
         for index in range(len(frontBackItemList)):
-            # Should this object be created in printfulAutomation?
-            newShirt = itemClasses.Shirt(frontBackItemList[index], 'shirt', color, True, False, gender=genderParameter)
+
+            newShirt = itemClasses.Shirt(frontBackItemList[index], productCategory, color, True, False, gender=genderParameter)
 
             generateProductMethods.createProduct(self, browser, newShirt)
 
@@ -60,9 +60,32 @@ class generateProductMethods():
             
             printfulAutomation.waitForPageLoad()
 
+    def createFrontItem(self, browser, productCategory, frontItemList, color, genderParameter):
+
+        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+        for index in range(len(frontItemList)):
+
+            newShirt = itemClasses.Shirt(frontItemList[index], productCategory, color, True, False, gender=genderParameter)
+
+            generateProductMethods.createProduct(self, browser, newShirt)
+
+            navigationFunctionsObject.goToChooseProduct(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            lastIndex = len(frontItemList) - 1
+
+            if index is not lastIndex:
+                if genderParameter == 'Mens':
+                    navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+                elif genderParameter == 'Womens':
+                    navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+            
+            printfulAutomation.waitForPageLoad()
+
 
     def createProduct(self, browser, newItem):
-        # Prerequisite: navigateToMensAllOverShirts
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 

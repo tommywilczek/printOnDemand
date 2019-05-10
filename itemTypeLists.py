@@ -32,3 +32,13 @@ womensOneSidedShirtTypeList = [
 sweatshirtTypeList = [
     'Unisex Sweatshirt'
 ]
+
+womensLeggingsTypeList = [
+    'Plus Size Leggings',
+    'All-Over Print Leggings', #might mess up bc it's looking for the element that contains these words
+    'Yoga Leggings',
+    'Capri Leggings',
+    'Yoga Capri Leggings',
+    'Yoga Shorts',
+    'All-Over Print Shorts' #same as above
+]

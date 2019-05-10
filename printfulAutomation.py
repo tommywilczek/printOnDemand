@@ -38,6 +38,8 @@ def main():
 
     sweatshirtTypeList = itemTypeLists.sweatshirtTypeList
 
+    womensLeggingsTypeList = itemTypeLists.womensLeggingsTypeList
+
 
     # womensSleevedShirtTypeList
 
@@ -45,44 +47,39 @@ def main():
 
         ### Men's shirts
 
-        ######################
-        # Todo: generalize create sleeve and sleeveless shirts into 
-        #       sleeve shirts and front/back items
-        #       then create a createFrontItem for rest of women's shirts and to be used for more
+        # sleeved
 
-        # # sleeved
+        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        waitForPageLoad()
 
-        # waitForPageLoad()
+        productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, True, 'Mens')
 
-        # productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, True, 'Mens')
+        # sleeveless
 
-        # # sleeveless
+        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        waitForPageLoad()
 
-        # waitForPageLoad()
+        productMethodsObject.createFrontBackItem(browser, 'shirt',mensSleevelessShirtTypeList, color, 'Mens')
 
-        # productMethodsObject.createAllSleevelessShirts(browser, mensSleevelessShirtTypeList, color, True, 'Mens')
+        #### Women's shirts
 
-        # #### Women's shirts
+        # sleeved
 
-        # # sleeved
+        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        waitForPageLoad()
 
-        # waitForPageLoad()
+        productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
 
-        # productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
+        # sleeveless
 
-        # # sleeveless
+        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        waitForPageLoad()
 
-        # waitForPageLoad()
-
-        # productMethodsObject.createAllSleevelessShirts(browser, womensSleevelessShirtTypeList, color, True, 'Womens')
+        productMethodsObject.createFrontBackItem(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
 
         # just front 
 
@@ -90,7 +87,7 @@ def main():
 
         waitForPageLoad()
 
-        productMethodsObject.createAllSleevelessShirts(browser, womensOneSidedShirtTypeList, color, False, 'Womens')
+        productMethodsObject.createFrontItem(browser, 'shirt', womensOneSidedShirtTypeList, color, 'Womens')
 
         ### Unisex Sweaters
 
@@ -100,6 +97,7 @@ def main():
 
         productMethodsObject.createAllSleevedShirts(browser, sweatshirtTypeList, color, True, 'Unisex')
 
+        ### Womens Leggings
 
 
 
