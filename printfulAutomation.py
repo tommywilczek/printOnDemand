@@ -29,26 +29,6 @@ def main():
 
     trianglifyColorList = trianglifyColors.trianglifyColorDict
 
-    mensSleevedShirtTypeList = itemTypeLists.mensSleevedShirtTypeList
-    mensSleevelessShirtTypeList = itemTypeLists.mensSleevelessShirtTypeList
-
-    womensSleevedShirtTypeList = itemTypeLists.womensSleevedShirtTypeList
-    womensSleevelessShirtTypeList = itemTypeLists.womensSleevelessShirtTypeList
-    womensOneSidedShirtTypeList = itemTypeLists.womensOneSidedShirtTypeList
-
-    sweatshirtTypeList = itemTypeLists.sweatshirtTypeList
-
-    mensShortsTypeList = itemTypeLists.mensShortsTypeList
-
-    mensLeggingsTypeList = itemTypeLists.mensLeggingsTypeList
-
-    womensLeggingsTypeList = itemTypeLists.womensLeggingsTypeList
-
-    womensShortsTypeList = itemTypeLists.womensShortsTypeList
-
-
-    # womensSleevedShirtTypeList
-
     for color in trianglifyColorList:
 
         ### Men's shirts
@@ -139,6 +119,28 @@ def main():
 
 def waitForPageLoad():
     time.sleep(1)
+
+
+mensSleevedShirtTypeList = itemTypeLists.mensSleevedShirtTypeList
+mensSleevelessShirtTypeList = itemTypeLists.mensSleevelessShirtTypeList
+
+womensSleevedShirtTypeList = itemTypeLists.womensSleevedShirtTypeList
+womensSleevelessShirtTypeList = itemTypeLists.womensSleevelessShirtTypeList
+womensOneSidedShirtTypeList = itemTypeLists.womensOneSidedShirtTypeList
+
+sweatshirtTypeList = itemTypeLists.sweatshirtTypeList
+
+mensShortsTypeList = itemTypeLists.mensShortsTypeList
+
+mensLeggingsTypeList = itemTypeLists.mensLeggingsTypeList
+
+womensLeggingsTypeList = itemTypeLists.womensLeggingsTypeList
+
+womensShortsTypeList = itemTypeLists.womensShortsTypeList
+
+
+# womensSleevedShirtTypeList
+
 
 if __name__ == "__main__":
     main()
