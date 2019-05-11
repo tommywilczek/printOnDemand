@@ -40,6 +40,8 @@ def main():
 
     mensShortsTypeList = itemTypeLists.mensShortsTypeList
 
+    mensLeggingsTypeList = itemTypeLists.mensLeggingsTypeList
+
     womensLeggingsTypeList = itemTypeLists.womensLeggingsTypeList
 
 
@@ -83,7 +85,7 @@ def main():
 
         # productMethodsObject.createFrontBackItem(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
 
-        # # just front 
+        # # just front womens shirts
 
         # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
@@ -99,13 +101,22 @@ def main():
 
         # productMethodsObject.createAllSleevedShirts(browser, sweatshirtTypeList, color, 'Unisex')
 
-        ### Mens Shorts
+        # ### Mens Shorts
 
-        navigationFunctionsObject.navigateToMensShorts(browser)
+        # navigationFunctionsObject.navigateToMensShorts(browser)
+
+        # waitForPageLoad()
+
+        # productMethodsObject.createFrontBackItem(browser, 'shorts', mensShortsTypeList, color, 'Mens')
+
+        ### Mens Leggings
+
+        navigationFunctionsObject.navigateToMensLeggings(browser)
 
         waitForPageLoad()
 
-        productMethodsObject.createFrontBackItem(browser, 'shorts', mensShortsTypeList, color, 'Mens')
+        productMethodsObject.createFrontItem(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
+
 
         ### Womens Leggings
 

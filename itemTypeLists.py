@@ -37,6 +37,10 @@ mensShortsTypeList = [
     'Athletic Long Shorts'
 ]
 
+mensLeggingsTypeList = [
+    'Leggings'
+]
+
 womensLeggingsTypeList = [
     'Plus Size Leggings',
     'All-Over Print Leggings', #might mess up bc it's looking for the element that contains these words
