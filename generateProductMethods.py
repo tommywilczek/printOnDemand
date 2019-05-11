@@ -3,6 +3,7 @@ import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException 
+from pprint import pprint
 
 import keywordLookup
 import printfulAutomation
@@ -10,7 +11,7 @@ import navigationFunctions
 import itemClasses
 
 class generateProductMethods():
-
+    # TODO: don't make a shirt subclass, just item... or maybe make more specific create methods?
     def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, hasBack, genderParameter):
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
@@ -121,9 +122,9 @@ class generateProductMethods():
         generateProductMethods.upchargeByPercentage(self, browser)
 
         # navigationFunctionsObject.clickSubmitButton(browser)
-
-        print('creating ', newItem.productStyle, newItem.productType, newItem.colorName, 'hasSleeves:', newItem.hasSleeves, newItem.gender)
-        
+        print('-----------')
+        pprint('Creating... \n', newItem.__dict__, indent=2)
+        print('-----------')
 
     def clickColorRadioButtonIfAvailable(self, browser, color):
 
