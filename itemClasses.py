@@ -1,16 +1,12 @@
 class item():
-    def __init__(self, productStyle, productCategory, colorName, hasBack, gender=None):
+    def __init__(self, productStyle, productCategory, colorName, hasSleeves, gender=None):
         self.productStyle = productStyle
 
-        self.productType = productCategory
+        self.productCategory = productCategory
 
         self.colorName = colorName
 
-        self.hasBack = hasBack
+        self.hasSleeves = hasSleeves
 
         self.gender = gender
 
-class Shirt(item):
-    def __init__(self, productStyle, productCategory, colorName, hasBack, hasSleeves, gender=None):
-        item.__init__(self, productStyle, productCategory, colorName, hasBack, gender)
-        self.hasSleeves = hasSleeves

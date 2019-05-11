@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException 
 from pprint import pprint
+import json
 
 import keywordLookup
 import printfulAutomation
@@ -67,9 +68,33 @@ class generateProductMethods():
 
         for index in range(len(frontItemList)):
 
-            newShirt = itemClasses.Shirt(frontItemList[index], productCategory, color, True, False, gender=genderParameter)
+            newItem = itemClasses.item(frontItemList[index], productCategory, color, True, gender=genderParameter)
 
-            generateProductMethods.createProduct(self, browser, newShirt)
+            navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+            navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
+
+            generateProductMethods.chooseColor(self, browser, newItem.colorName)
+
+            printfulAutomation.waitForPageLoad()
+
+            navigationFunctionsObject.proceedToProductDescription(browser)
+
+            printfulAutomation.waitForPageLoad()
+            
+            generateProductMethods.createProductDescription(self, browser, newItem)
+
+            navigationFunctionsObject.proceedToPricing(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.upchargeByPercentage(self, browser)
+
+            generateProductMethods.clickSubmit(self, browser, newItem)
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
@@ -121,10 +146,8 @@ class generateProductMethods():
 
         generateProductMethods.upchargeByPercentage(self, browser)
 
-        # navigationFunctionsObject.clickSubmitButton(browser)
-        print('-----------')
-        pprint('Creating... \n', newItem.__dict__, indent=2)
-        print('-----------')
+        generateProductMethods.clickSubmit(self, browser, newItem)
+
 
     def clickColorRadioButtonIfAvailable(self, browser, color):
 
@@ -204,7 +227,7 @@ class generateProductMethods():
 
         colorName = newItem.colorName.replace('-', ' ')
 
-        productKeywords = keywordLookup.keywordDict[newItem.productType]
+        productKeywords = keywordLookup.keywordDict[newItem.productCategory]
 
         companyName = 'Pattern Pop'
 
@@ -221,3 +244,11 @@ class generateProductMethods():
         numberToIncreaseField.clear()
 
         numberToIncreaseField.send_keys('15')
+
+    def clickSubmit(self, browser, newItem):
+
+        # navigationFunctionsObject.clickSubmitButton(browser)
+
+        print('-----------')
+        print('Creating... \n', newItem.productStyle, newItem.productCategory, newItem.colorName, newItem.gender)
+        print('-----------')

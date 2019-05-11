@@ -47,39 +47,39 @@ def main():
 
         ### Men's shirts
 
-        # sleeved
+        # # sleeved
 
-        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, True, 'Mens')
+        # productMethodsObject.createAllSleevedShirts(browser, mensSleevedShirtTypeList, color, True, 'Mens')
 
-        # sleeveless
+        # # sleeveless
 
-        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createFrontBackItem(browser, 'shirt',mensSleevelessShirtTypeList, color, 'Mens')
+        # productMethodsObject.createFrontBackItem(browser, 'shirt',mensSleevelessShirtTypeList, color, 'Mens')
 
-        #### Women's shirts
+        # #### Women's shirts
 
-        # sleeved
+        # # sleeved
 
-        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
+        # productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
 
-        # sleeveless
+        # # sleeveless
 
-        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createFrontBackItem(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
+        # productMethodsObject.createFrontBackItem(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
 
         # just front 
 
