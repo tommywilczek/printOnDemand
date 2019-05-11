@@ -12,6 +12,60 @@ import navigationFunctions
 import itemClasses
 
 class generateProductMethods():
+
+    def createNewProduct(self, browser, itemCategory, itemTypeList, color, genderParameter):
+        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+        for index in range(len(itemTypeList)):
+
+            newItem = itemClasses.item(itemTypeList[index], itemCategory, color, True, gender=genderParameter)
+
+            navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+            navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
+
+            generateProductMethods.chooseFirstColor(self, browser, newItem.colorName)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.chooseBackOfItemColorIfAvailable(self, browser, newItem)
+
+            generateProductMethods.chooseSleeveColors(self, browser, newItem)
+
+            printfulAutomation.waitForPageLoad()
+
+            navigationFunctionsObject.proceedToProductDescription(browser)
+
+            printfulAutomation.waitForPageLoad()
+            
+            generateProductMethods.createProductDescription(self, browser, newItem)
+
+            navigationFunctionsObject.proceedToPricing(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.upchargeByPercentage(self, browser)
+
+            generateProductMethods.submitProduct(self, browser, newItem)
+
+            navigationFunctionsObject.goToChooseProduct(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            lastIndex = len(itemTypeList) - 1
+
+            if index is not lastIndex: # How to return to accessories, etc?
+
+                if genderParameter == 'Mens':
+                    navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+                elif genderParameter == 'Womens':
+                    navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+            
+            printfulAutomation.waitForPageLoad()
     # TODO: don't make a shirt subclass, just item... or maybe make more specific create methods?
     def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, genderParameter):
 
@@ -33,7 +87,7 @@ class generateProductMethods():
 
             printfulAutomation.waitForPageLoad()
 
-            generateProductMethods.chooseBackOfItemColor(self, browser, newItem)
+            generateProductMethods.chooseBackOfItemColorIfAvailable(self, browser, newItem)
 
             printfulAutomation.waitForPageLoad()
 
@@ -53,9 +107,7 @@ class generateProductMethods():
 
             generateProductMethods.upchargeByPercentage(self, browser)
 
-            generateProductMethods.clickSubmit(self, browser, newItem)
-
-
+            generateProductMethods.submitProduct(self, browser, newItem)
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
@@ -92,7 +144,7 @@ class generateProductMethods():
 
             printfulAutomation.waitForPageLoad()
 
-            generateProductMethods.chooseBackOfItemColor(self, browser, newItem)
+            generateProductMethods.chooseBackOfItemColorIfAvailable(self, browser, newItem)
             printfulAutomation.waitForPageLoad()
 
             printfulAutomation.waitForPageLoad()
@@ -109,7 +161,7 @@ class generateProductMethods():
 
             generateProductMethods.upchargeByPercentage(self, browser)
 
-            generateProductMethods.clickSubmit(self, browser, newItem)
+            generateProductMethods.submitProduct(self, browser, newItem)
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
@@ -157,7 +209,7 @@ class generateProductMethods():
 
             generateProductMethods.upchargeByPercentage(self, browser)
 
-            generateProductMethods.clickSubmit(self, browser, newItem)
+            generateProductMethods.submitProduct(self, browser, newItem)
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
@@ -173,6 +225,58 @@ class generateProductMethods():
             
             printfulAutomation.waitForPageLoad()
 
+    def createWomensLeggings(self, browser, frontBackItemList, color, genderParameter):
+
+        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+        for index in range(len(frontBackItemList)):
+
+            newItem = itemClasses.item(frontBackItemList[index], 'leggings', color, False, gender=genderParameter)
+
+            navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+            navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
+
+            generateProductMethods.chooseFirstColor(self, browser, newItem.colorName) # Right Leg
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.chooseLeftLegColor(self, browser, newItem)
+
+            printfulAutomation.waitForPageLoad()
+
+            printfulAutomation.waitForPageLoad()
+
+            navigationFunctionsObject.proceedToProductDescription(browser)
+
+            printfulAutomation.waitForPageLoad()
+            
+            generateProductMethods.createProductDescription(self, browser, newItem)
+
+            navigationFunctionsObject.proceedToPricing(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.upchargeByPercentage(self, browser)
+
+            generateProductMethods.submitProduct(self, browser, newItem)
+
+            navigationFunctionsObject.goToChooseProduct(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            lastIndex = len(frontBackItemList) - 1
+
+            if index is not lastIndex:
+                navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+            
+            printfulAutomation.waitForPageLoad()
+
+
 
     def clickColorRadioButtonIfAvailable(self, browser, color):
 
@@ -186,7 +290,13 @@ class generateProductMethods():
         whiteRadioButton.send_keys(Keys.SPACE) # click radio button
 
 
-    def chooseBackOfItemColor(self, browser, newShirt):
+    def chooseBackOfItemColorIfAvailable(self, browser, newShirt):
+        
+        try:
+            browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
+        except NoSuchElementException:
+            return 
+        
         backOfItemTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
 
         backOfItemTab.click()
@@ -194,6 +304,8 @@ class generateProductMethods():
         printfulAutomation.waitForPageLoad()
 
         generateProductMethods.chooseFirstColor(self, browser, newShirt.colorName + '_mirror')
+
+        printfulAutomation.waitForPageLoad()
 
     def chooseSleeveColors(self, browser, newShirt):
         rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[3]/a/span')
@@ -230,6 +342,16 @@ class generateProductMethods():
         frontColorChooserButton = browser.find_element_by_xpath('//*[@title="%s.png"]' % colorName)
 
         frontColorChooserButton.click()
+
+    def chooseLeftLegColor(self, browser, newItem):
+        backOfItemTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
+
+        backOfItemTab.click()
+
+        printfulAutomation.waitForPageLoad()
+
+        generateProductMethods.chooseFirstColor(self, browser, newItem.colorName + '_mirror')
+
 
     def createProductDescription(self, browser, newShirt):
         productDescription = generateProductMethods.generateProductDescription(self, browser, newShirt)
@@ -270,7 +392,9 @@ class generateProductMethods():
 
         numberToIncreaseField.send_keys('15')
 
-    def clickSubmit(self, browser, newItem):
+    def submitProduct(self, browser, newItem):
+
+        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
         # navigationFunctionsObject.clickSubmitButton(browser)
 
