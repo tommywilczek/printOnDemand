@@ -19,9 +19,43 @@ class generateProductMethods():
 
         for index in range(len(sleevedShirtTypeList)):
 
-            newShirt = itemClasses.Shirt(sleevedShirtTypeList[index], 'shirt', color, True, True, gender=genderParameter)
+            newItem = itemClasses.item(sleevedShirtTypeList[index], 'shirt', color, True, gender=genderParameter)
 
-            generateProductMethods.createProduct(self, browser, newShirt)
+            navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+            navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
+
+            generateProductMethods.chooseFirstColor(self, browser, newItem.colorName)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.chooseBackOfItemColor(self, browser, newItem)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.chooseSleeveColors(self, browser, newItem)
+
+            printfulAutomation.waitForPageLoad()
+
+            navigationFunctionsObject.proceedToProductDescription(browser)
+
+            printfulAutomation.waitForPageLoad()
+            
+            generateProductMethods.createProductDescription(self, browser, newItem)
+
+            navigationFunctionsObject.proceedToPricing(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.upchargeByPercentage(self, browser)
+
+            generateProductMethods.clickSubmit(self, browser, newItem)
+
+
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
@@ -54,7 +88,7 @@ class generateProductMethods():
 
             generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
 
-            generateProductMethods.chooseColor(self, browser, newItem.colorName)
+            generateProductMethods.chooseFirstColor(self, browser, newItem.colorName)
 
             printfulAutomation.waitForPageLoad()
 
@@ -76,9 +110,6 @@ class generateProductMethods():
             generateProductMethods.upchargeByPercentage(self, browser)
 
             generateProductMethods.clickSubmit(self, browser, newItem)
-
-
-
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
@@ -110,7 +141,7 @@ class generateProductMethods():
 
             generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
 
-            generateProductMethods.chooseColor(self, browser, newItem.colorName)
+            generateProductMethods.chooseFirstColor(self, browser, newItem.colorName)
 
             printfulAutomation.waitForPageLoad()
 
@@ -143,44 +174,6 @@ class generateProductMethods():
             printfulAutomation.waitForPageLoad()
 
 
-    def createProduct(self, browser, newItem):
-
-        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
-
-        navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
-
-        printfulAutomation.waitForPageLoad()
-
-        generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
-
-        generateProductMethods.chooseColor(self, browser, newItem.colorName)
-
-        printfulAutomation.waitForPageLoad()
-
-        if newItem.hasBack:
-            generateProductMethods.chooseBackOfItemColor(self, browser, newItem)
-            printfulAutomation.waitForPageLoad()
-
-        if newItem.hasSleeves:
-            generateProductMethods.chooseSleeveColors(self, browser, newItem)
-
-        printfulAutomation.waitForPageLoad()
-
-        navigationFunctionsObject.proceedToProductDescription(browser)
-
-        printfulAutomation.waitForPageLoad()
-        
-        generateProductMethods.createProductDescription(self, browser, newItem)
-
-        navigationFunctionsObject.proceedToPricing(browser)
-
-        printfulAutomation.waitForPageLoad()
-
-        generateProductMethods.upchargeByPercentage(self, browser)
-
-        generateProductMethods.clickSubmit(self, browser, newItem)
-
-
     def clickColorRadioButtonIfAvailable(self, browser, color):
 
         try:
@@ -200,14 +193,14 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
+        generateProductMethods.chooseFirstColor(self, browser, newShirt.colorName + '_mirror')
 
     def chooseSleeveColors(self, browser, newShirt):
         rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[3]/a/span')
 
         rightSleeveTab.click()
 
-        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
+        generateProductMethods.chooseFirstColor(self, browser, newShirt.colorName + '_mirror')
 
         printfulAutomation.waitForPageLoad()
 
@@ -215,9 +208,9 @@ class generateProductMethods():
 
         rightSleeveTab.click()
 
-        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
+        generateProductMethods.chooseFirstColor(self, browser, newShirt.colorName + '_mirror')
 
-    def chooseColor(self, browser, colorName):
+    def chooseFirstColor(self, browser, colorName):
         uploadFileButton = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
 
         browser.execute_script("arguments[0].scrollIntoView();", uploadFileButton)
@@ -282,5 +275,5 @@ class generateProductMethods():
         # navigationFunctionsObject.clickSubmitButton(browser)
 
         print('-----------')
-        print('Creating... \n', newItem.productStyle, newItem.productCategory, newItem.colorName, newItem.gender)
+        print('Created... \n', newItem.productStyle, newItem.productCategory, newItem.colorName, newItem.gender)
         print('-----------')
