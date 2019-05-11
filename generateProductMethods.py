@@ -44,9 +44,41 @@ class generateProductMethods():
 
         for index in range(len(frontBackItemList)):
 
-            newShirt = itemClasses.Shirt(frontBackItemList[index], productCategory, color, True, False, gender=genderParameter)
+            newItem = itemClasses.item(frontBackItemList[index], productCategory, color, False, gender=genderParameter)
 
-            generateProductMethods.createProduct(self, browser, newShirt)
+            navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+            navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
+
+            generateProductMethods.chooseColor(self, browser, newItem.colorName)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.chooseBackOfItemColor(self, browser, newItem)
+            printfulAutomation.waitForPageLoad()
+
+            printfulAutomation.waitForPageLoad()
+
+            navigationFunctionsObject.proceedToProductDescription(browser)
+
+            printfulAutomation.waitForPageLoad()
+            
+            generateProductMethods.createProductDescription(self, browser, newItem)
+
+            navigationFunctionsObject.proceedToPricing(browser)
+
+            printfulAutomation.waitForPageLoad()
+
+            generateProductMethods.upchargeByPercentage(self, browser)
+
+            generateProductMethods.clickSubmit(self, browser, newItem)
+
+
+
 
             navigationFunctionsObject.goToChooseProduct(browser)
 

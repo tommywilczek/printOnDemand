@@ -73,13 +73,13 @@ def main():
 
         # productMethodsObject.createAllSleevedShirts(browser, womensSleevedShirtTypeList, color, True, 'Womens')
 
-        # # sleeveless
+        # sleeveless
 
-        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        # waitForPageLoad()
+        waitForPageLoad()
 
-        # productMethodsObject.createFrontBackItem(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
+        productMethodsObject.createFrontBackItem(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
 
         # just front 
 
