@@ -36,6 +36,8 @@ class NavigationFunctions():
 
         addProductButton.click()
 
+        printfulAutomation.waitForPageLoad()
+
     def navigateToMensAllOverShirts(self, browser):
         # Prerequisite: goToChooseProduct
         mensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[1]')
@@ -90,6 +92,8 @@ class NavigationFunctions():
 
         productStyleButton.click()
 
+        printfulAutomation.waitForPageLoad()
+
 
     def proceedToProductDescription(self, browser):
         proceedToMockupsButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to mockups')]")
@@ -100,10 +104,14 @@ class NavigationFunctions():
 
         proceedToDescriptionButton.click()
 
+        printfulAutomation.waitForPageLoad()
+
     def proceedToPricing(self, browser):
         proceedToPricingButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to pricing')]")
 
         proceedToPricingButton.click()
+
+        printfulAutomation.waitForPageLoad()
 
     def clickSubmitButton(self, browser):
         submitItemButton = browser.find_element_by_xpath("//*[contains(text(), 'Submit to store')]")

@@ -24,27 +24,19 @@ class generateProductMethods():
 
             navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
 
-            printfulAutomation.waitForPageLoad()
-
             generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
 
             generateProductMethods.chooseFirstColor(self, browser, newItem.colorName)
-
-            printfulAutomation.waitForPageLoad()
 
             generateProductMethods.chooseBackOfItemColorIfAvailable(self, browser, newItem)
 
             generateProductMethods.chooseSleeveColorsIfAvailable(self, browser, newItem)
 
             navigationFunctionsObject.proceedToProductDescription(browser)
-
-            printfulAutomation.waitForPageLoad()
             
             generateProductMethods.createProductDescription(self, browser, newItem)
 
             navigationFunctionsObject.proceedToPricing(browser)
-
-            printfulAutomation.waitForPageLoad()
 
             generateProductMethods.upchargeByPercentage(self, browser)
 
@@ -354,6 +346,8 @@ class generateProductMethods():
         frontColorChooserButton = browser.find_element_by_xpath('//*[@title="%s.png"]' % colorName)
 
         frontColorChooserButton.click()
+
+        printfulAutomation.waitForPageLoad()
 
     def chooseLeftLegColor(self, browser, newItem):
         backOfItemTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
