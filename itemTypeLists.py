@@ -50,3 +50,7 @@ womensLeggingsTypeList = [
     'Yoga Shorts',
     'All-Over Print Shorts' #same as above
 ]
+
+womensShortsTypeList = [
+    'All-Over Print Shorts'
+]

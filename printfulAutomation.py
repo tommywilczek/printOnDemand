@@ -44,6 +44,8 @@ def main():
 
     womensLeggingsTypeList = itemTypeLists.womensLeggingsTypeList
 
+    womensShortsTypeList = itemTypeLists.womensShortsTypeList
+
 
     # womensSleevedShirtTypeList
 
@@ -109,16 +111,26 @@ def main():
 
         # productMethodsObject.createFrontBackItem(browser, 'shorts', mensShortsTypeList, color, 'Mens')
 
-        ### Mens Leggings
+        # ### Mens Leggings
 
-        navigationFunctionsObject.navigateToMensLeggings(browser)
+        # navigationFunctionsObject.navigateToMensLeggings(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createFrontItem(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
+        # productMethodsObject.createFrontItem(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
 
 
         ### Womens Leggings
+
+        ### Womens Shorts
+
+        navigationFunctionsObject.navigateToWomensShorts(browser)
+
+        waitForPageLoad()
+
+        ######### ATTENTION: STILL NEED TO MAKE THE OTHER TYPES OF womens SHORTS
+
+        productMethodsObject.createFrontItem(browser, 'shorts', womensShortsTypeList, color, 'Womens')
 
 
 
