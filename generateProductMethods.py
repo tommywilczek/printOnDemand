@@ -13,7 +13,7 @@ import itemClasses
 
 class generateProductMethods():
     # TODO: don't make a shirt subclass, just item... or maybe make more specific create methods?
-    def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, hasBack, genderParameter):
+    def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, genderParameter):
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
