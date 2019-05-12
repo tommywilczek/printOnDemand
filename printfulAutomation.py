@@ -83,13 +83,13 @@ def main():
 
         # productMethodsObject.createNewProduct(browser, 'sweatshirt', sweatshirtTypeList, color, 'Unisex')
 
-        ### Mens Shorts
+        # ### Mens Shorts
 
-        navigationFunctionsObject.navigateToMensShorts(browser)
+        # navigationFunctionsObject.navigateToMensShorts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shorts', mensShortsTypeList, color, 'Mens')
+        # productMethodsObject.createNewProduct(browser, 'shorts', mensShortsTypeList, color, 'Mens')
 
         ### Mens Leggings
 

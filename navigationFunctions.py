@@ -41,6 +41,11 @@ class NavigationFunctions():
 
         printfulAutomation.waitForPageLoad()
 
+    def navigateToWomensClothing(self, browser):
+        womensClothingButton = browser.find_element_by_xpath("//h3[text()= \"Women's clothing\"]")
+
+        womensClothingButton.click()
+
     def navigateToAllOverShirts(self, browser):
         allOverShirtsButton = browser.find_element_by_xpath("//h3[text()='All-over shirts']")
 
@@ -58,9 +63,7 @@ class NavigationFunctions():
 
     def navigateToWomensAllOverShirts(self, browser):
         # Prerequisite: goToChooseProduct
-        womensClothingButton = browser.find_element_by_xpath("//h3[text()= \"Women's clothing\"]")
-
-        womensClothingButton.click()
+        self.navigateToWomensClothing(browser)
 
         self.navigateToAllOverShirts(browser)
 
@@ -76,31 +79,31 @@ class NavigationFunctions():
 
         shortsButton.click()
 
-    def navigateToWomensShorts(self, browser):
-
-        womensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[2]')
-
-        womensClothingButton.click()
-
-        womensShortsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li/ul/li[4]/ul/li[4]/a')
-
-        womensShortsButton.click()
-
     def navigateToMensLeggings(self, browser):
 
-        leggingsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li[1]/ul/li[4]/ul/li[2]/a')
+        leggingsButton = browser.find_element_by_xpath("//a[text()= 'Leggings']") # Mens is the one that shows up first i nthe DOM. Womens is second.
 
         leggingsButton.click()
 
-    def navigateToWomensLeggings(self, browser):
 
-        womensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[2]')
+    # def navigateToWomensShorts(self, browser):
 
-        womensClothingButton.click()
+    #     self.navigateToWomensClothing(browser)
 
-        leggingsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li/ul/li[4]/ul/li[2]/a')
+    #     womensShortsButton = browser.find_element_by_xpath("//h3[text()= 'Shorts']")
 
-        leggingsButton.click()
+    #     womensShortsButton.click()
+
+
+    # def navigateToWomensLeggings(self, browser):
+
+    #     womensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[2]')
+
+    #     womensClothingButton.click()
+
+    #     leggingsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li/ul/li[4]/ul/li[2]/a')
+
+    #     leggingsButton.click()
 
     def navigateToCreateProductStyle(self, browser, productStyle):
         # Prerequisite: Must be in a category, like navigateToMensAllOverShirts
