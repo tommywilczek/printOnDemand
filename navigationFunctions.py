@@ -85,6 +85,17 @@ class NavigationFunctions():
 
         leggingsButton.click()
 
+    def navigateToWomensLeggings(self, browser):
+
+        self.navigateToWomensClothing(browser)
+
+        leggingsButton = browser.find_element_by_xpath("//h3[text()= 'Leggings']")
+
+        browser.execute_script("arguments[0].scrollIntoView();", leggingsButton)
+
+        printfulAutomation.waitForPageLoad()
+
+        leggingsButton.click()
 
     # def navigateToWomensShorts(self, browser):
 
@@ -93,17 +104,6 @@ class NavigationFunctions():
     #     womensShortsButton = browser.find_element_by_xpath("//h3[text()= 'Shorts']")
 
     #     womensShortsButton.click()
-
-
-    # def navigateToWomensLeggings(self, browser):
-
-    #     womensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[2]')
-
-    #     womensClothingButton.click()
-
-    #     leggingsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li/ul/li[4]/ul/li[2]/a')
-
-    #     leggingsButton.click()
 
     def navigateToCreateProductStyle(self, browser, productStyle):
         # Prerequisite: Must be in a category, like navigateToMensAllOverShirts

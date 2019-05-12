@@ -30,11 +30,15 @@ class generateProductMethods():
 
             self.chooseBackOfItemColorIfAvailable(browser, newItem)
 
-            self.chooseRightSleeveColorsIfAvailable(browser, newItem)
+            self.chooseRightSleeveColorIfAvailable(browser, newItem)
 
-            self.chooseLeftSleeveColorsIfAvailable(browser, newItem)
+            self.chooseLeftSleeveColorIfAvailable(browser, newItem)
 
             self.chooseLeftLegColorIfAvailable(browser, newItem)
+
+            self.chooseFrontWaistColorIfAvailable(browser, newItem)
+
+            self.chooseBackWaistColorsIfAvailable(browser, newItem)
 
             navigationFunctionsObject.proceedToProductDescription(browser)
             
@@ -55,7 +59,7 @@ class generateProductMethods():
                 if genderParameter == 'Mens':
                     navigationFunctionsObject.navigateToMensAllOverShirts(browser)
                 elif genderParameter == 'Womens':
-                    navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+                    navigationFunctionsObject.navigateToWomensClothing(browser)
             
             printfulAutomation.waitForPageLoad()
 
@@ -87,7 +91,7 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-    def chooseRightSleeveColorsIfAvailable(self, browser, newShirt):
+    def chooseRightSleeveColorIfAvailable(self, browser, newShirt):
 
         rightSleeveTab = self.findElement(browser, 'right sleeve')
 
@@ -101,7 +105,7 @@ class generateProductMethods():
         printfulAutomation.waitForPageLoad()
 
 
-    def chooseLeftSleeveColorsIfAvailable(self, browser, newShirt):
+    def chooseLeftSleeveColorIfAvailable(self, browser, newShirt):
 
         leftSleeveTab = self.findElement(browser, 'left sleeve')
 
@@ -113,6 +117,46 @@ class generateProductMethods():
         self.chooseColor(browser, newShirt.colorName + '_mirror')
 
         printfulAutomation.waitForPageLoad()
+
+    def chooseLeftLegColorIfAvailable(self, browser, newShirt):
+
+        leftLegTab = self.findElement(browser, 'left leg')
+
+        if leftLegTab == False:
+            return
+
+        leftLegTab.click()
+
+        self.chooseColor(browser, newShirt.colorName + '_mirror')
+
+        printfulAutomation.waitForPageLoad()
+
+    def chooseFrontWaistColorIfAvailable(self, browser, newShirt):
+
+        frontWaistTab = self.findElement(browser, 'front waist')
+
+        if frontWaistTab == False:
+            return
+
+        frontWaistTab.click()
+
+        self.chooseColor(browser, newShirt.colorName)
+
+        printfulAutomation.waitForPageLoad()
+
+    def chooseBackWaistColorsIfAvailable(self, browser, newShirt):
+
+        backWaistTab = self.findElement(browser, 'back waist')
+
+        if backWaistTab == False:
+            return
+
+        backWaistTab.click()
+
+        self.chooseColor(browser, newShirt.colorName + '_mirror')
+
+        printfulAutomation.waitForPageLoad()
+
 
     def chooseColor(self, browser, colorName):
         uploadFileButton = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
@@ -136,20 +180,6 @@ class generateProductMethods():
         frontColorChooserButton.click()
 
         printfulAutomation.waitForPageLoad()
-
-    def chooseLeftLegColorIfAvailable(self, browser, newItem):
-
-        leftLegTab = self.findElement(browser, 'left leg')
-
-        if leftLegTab == False:
-            return
-
-        leftLegTab.click()
-
-        printfulAutomation.waitForPageLoad()
-
-        self.chooseColor(browser, newItem.colorName + '_mirror')
-
 
     def createProductDescription(self, browser, newShirt):
         productDescription = self.generateProductDescription(browser, newShirt)

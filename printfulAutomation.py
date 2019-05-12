@@ -51,13 +51,13 @@ def main():
 
         #### Women's shirts
 
-        # sleeved
+        # # sleeved
 
-        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shirt', womensSleevedShirtTypeList, color, 'Womens')
+        # productMethodsObject.createNewProduct(browser, 'shirt', womensSleevedShirtTypeList, color, 'Womens')
 
         # # sleeveless
 
@@ -99,13 +99,13 @@ def main():
 
         # productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
 
-        # ### Womens Leggings
+        ### Womens Leggings
 
-        # navigationFunctionsObject.navigateToWomensLeggings(browser)
+        navigationFunctionsObject.navigateToWomensLeggings(browser)
 
-        # waitForPageLoad()
+        waitForPageLoad()
 
-        # productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Womens')
+        productMethodsObject.createNewProduct(browser, 'leggings', womensLeggingsTypeList, color, 'Womens')
 
         # ### Womens Shorts
 
