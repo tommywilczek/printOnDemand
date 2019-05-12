@@ -12,9 +12,9 @@ mensSleevelessShirtTypeList = [
 ]
 
 womensSleevedShirtTypeList = [
-    'Athletic T-Shirt',
-    'Crew Neck T-Shirt',
-    'Crop Tee',
+    # 'Athletic T-Shirt',
+    # 'Crew Neck T-Shirt',
+    # 'Crop Tee',
     'Rash Guard',
     'V-Neck T-Shirt'
 ]

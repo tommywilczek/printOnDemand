@@ -35,43 +35,45 @@ def main():
 
         # # sleeved
 
-        for productType in mensSleevedShirtTypeList:
-
-                navigationFunctionsObject.navigateToMensAllOverShirts(browser)
-
-                waitForPageLoad()
-
-                newItem = itemClasses.item(productType, 'shirt', color, True, gender='Mens')
-
-                productMethodsObject.createNewProduct(browser, newItem)
+        createItemsFromItemTypeList(browser, mensSleevedShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
 
         # # sleeveless
 
-        for productType in mensSleevelessShirtTypeList:
+        createItemsFromItemTypeList(browser, mensSleevelessShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
 
-                navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-                waitForPageLoad()
+        # for productType in mensSleevelessShirtTypeList:
 
-                newItem = itemClasses.item(productType, 'shirt', color, True, gender='Mens')
+        #         navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-                productMethodsObject.createNewProduct(browser, newItem)
+        #         waitForPageLoad()
 
-        ### Women's shirts
+        #         newItem = itemClasses.item(productType, 'shirt', color, True, gender='Mens')
 
-        # sleeved
+        #         productMethodsObject.createNewProduct(browser, newItem)
 
-        for productType in womensSleevedShirtTypeList:
+        # ### Women's shirts
 
-                navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        # # sleeved
 
-                waitForPageLoad()
+        createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-                newItem = itemClasses.item(productType, 'shirt', color, True, gender='Womens')
 
-                productMethodsObject.createNewProduct(browser, newItem)
+        # for productType in womensSleevedShirtTypeList:
+
+        #         navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+        #         waitForPageLoad()
+
+        #         newItem = itemClasses.item(productType, 'shirt', color, True, gender='Womens')
+
+        #         productMethodsObject.createNewProduct(browser, newItem)
+
 
         # # sleeveless
+
+        createItemsFromItemTypeList(browser, womensSleevelessShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+
 
         # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
@@ -131,6 +133,25 @@ def main():
 
 
 
+def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, navigateBackTo, gender=None):
+
+        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+
+        productMethodsObject = generateProductMethods.generateProductMethods()
+
+        for itemType in itemTypeList:
+
+                if navigateBackTo == 'Mens all-over shirts':
+                        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+                elif navigateBackTo == 'Womens all-over shirts':
+                        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+                # Accessories, Home, etc.
+
+                waitForPageLoad()
+
+                newItem = itemClasses.item(itemType, productCategory, color, gender)
+
+                productMethodsObject.createNewProduct(browser, newItem)
 
 
 
