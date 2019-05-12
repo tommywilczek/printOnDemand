@@ -41,27 +41,28 @@ class NavigationFunctions():
 
         printfulAutomation.waitForPageLoad()
 
-    def navigateToMensAllOverShirts(self, browser):
-        # Prerequisite: goToChooseProduct
-        mensClothingButton = browser.find_element_by_xpath("//h3[text()= \"Men's clothing\"]")
-
-        mensClothingButton.click()
-
+    def navigateToAllOverShirts(self, browser):
         allOverShirtsButton = browser.find_element_by_xpath("//h3[text()='All-over shirts']")
 
         browser.execute_script("arguments[0].scrollIntoView();", allOverShirtsButton)
 
         allOverShirtsButton.click()
 
+    def navigateToMensAllOverShirts(self, browser):
+        # Prerequisite: goToChooseProduct
+        mensClothingButton = browser.find_element_by_xpath("//h3[text()= \"Men's clothing\"]")
+
+        mensClothingButton.click()
+
+        self.navigateToAllOverShirts(browser)
+
     def navigateToWomensAllOverShirts(self, browser):
         # Prerequisite: goToChooseProduct
-        womensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[2]')
+        womensClothingButton = browser.find_element_by_xpath("//h3[text()= \"Women's clothing\"]")
 
         womensClothingButton.click()
 
-        allOverShirtsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[3]')
-
-        allOverShirtsButton.click()
+        self.navigateToAllOverShirts(browser)
 
     def navigateToSweatshirts(self, browser):
         # Prerequisite: goToChooseProduct
