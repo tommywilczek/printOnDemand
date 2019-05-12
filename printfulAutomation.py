@@ -33,13 +33,13 @@ def main():
 
         ### Men's shirts
 
-        # # sleeved
+        # sleeved
 
-        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        # waitForPageLoad()
+        waitForPageLoad()
 
-        # productMethodsObject.createNewProduct(browser, 'shirt', mensSleevedShirtTypeList, color, 'Mens')
+        productMethodsObject.createNewProduct(browser, 'shirt', mensSleevedShirtTypeList, color, 'Mens')
 
         # # sleeveless
 
@@ -83,21 +83,21 @@ def main():
 
         # productMethodsObject.createNewProduct(browser, 'sweatshirt', sweatshirtTypeList, color, 'Unisex')
 
-        ### Mens Shorts
+        # ### Mens Shorts
 
-        navigationFunctionsObject.navigateToMensShorts(browser)
+        # navigationFunctionsObject.navigateToMensShorts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shorts', mensShortsTypeList, color, 'Mens')
+        # productMethodsObject.createNewProduct(browser, 'shorts', mensShortsTypeList, color, 'Mens')
 
-        ### Mens Leggings
+        # ### Mens Leggings
 
-        navigationFunctionsObject.navigateToMensLeggings(browser)
+        # navigationFunctionsObject.navigateToMensLeggings(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
+        # productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
 
 
         ### Womens Leggings
