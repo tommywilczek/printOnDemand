@@ -44,11 +44,6 @@ class generateProductMethods():
 
         self.submitProduct(browser, newItem)
 
-        navigationFunctionsObject.goToChooseProduct(browser)
-        
-        printfulAutomation.waitForPageLoad()
-
-
     def clickColorRadioButtonIfAvailable(self, browser, color):
 
         try:
