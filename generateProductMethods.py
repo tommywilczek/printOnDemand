@@ -13,55 +13,40 @@ import itemClasses
 
 class generateProductMethods():
 
-    def createNewProduct(self, browser, itemCategory, itemTypeList, color, genderParameter):
+    def createNewProduct(self, browser, newItem):
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
-        for index in range(len(itemTypeList)):
+        navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
 
-            newItem = itemClasses.item(itemTypeList[index], itemCategory, color, True, gender=genderParameter)
+        self.clickColorRadioButtonIfAvailable(browser, 'white')
 
-            navigationFunctionsObject = navigationFunctions.NavigationFunctions()
+        self.chooseColor(browser, newItem.colorName)
 
-            navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
+        self.chooseBackOfItemColorIfAvailable(browser, newItem)
 
-            self.clickColorRadioButtonIfAvailable(browser, 'white')
+        self.chooseRightSleeveColorIfAvailable(browser, newItem)
 
-            self.chooseColor(browser, newItem.colorName)
+        self.chooseLeftSleeveColorIfAvailable(browser, newItem)
 
-            self.chooseBackOfItemColorIfAvailable(browser, newItem)
+        self.chooseLeftLegColorIfAvailable(browser, newItem)
 
-            self.chooseRightSleeveColorIfAvailable(browser, newItem)
+        self.chooseFrontWaistColorIfAvailable(browser, newItem)
 
-            self.chooseLeftSleeveColorIfAvailable(browser, newItem)
+        self.chooseBackWaistColorsIfAvailable(browser, newItem)
 
-            self.chooseLeftLegColorIfAvailable(browser, newItem)
+        navigationFunctionsObject.proceedToProductDescription(browser)
+        
+        self.createProductDescription(browser, newItem)
 
-            self.chooseFrontWaistColorIfAvailable(browser, newItem)
+        navigationFunctionsObject.proceedToPricing(browser)
 
-            self.chooseBackWaistColorsIfAvailable(browser, newItem)
+        self.upchargeByPercentage(browser)
 
-            navigationFunctionsObject.proceedToProductDescription(browser)
-            
-            self.createProductDescription(browser, newItem)
+        self.submitProduct(browser, newItem)
 
-            navigationFunctionsObject.proceedToPricing(browser)
-
-            self.upchargeByPercentage(browser)
-
-            self.submitProduct(browser, newItem)
-
-            navigationFunctionsObject.goToChooseProduct(browser)
-
-            lastIndex = len(itemTypeList) - 1
-
-            if index is not lastIndex: # How to return to accessories, etc?
-
-                if genderParameter == 'Mens':
-                    navigationFunctionsObject.navigateToMensAllOverShirts(browser)
-                elif genderParameter == 'Womens':
-                    navigationFunctionsObject.navigateToWomensClothing(browser)
-            
-            printfulAutomation.waitForPageLoad()
+        navigationFunctionsObject.goToChooseProduct(browser)
+        
+        printfulAutomation.waitForPageLoad()
 
 
     def clickColorRadioButtonIfAvailable(self, browser, color):

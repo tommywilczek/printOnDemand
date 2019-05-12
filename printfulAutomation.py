@@ -35,29 +35,41 @@ def main():
 
         # # sleeved
 
-        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        for productType in mensSleevedShirtTypeList:
 
-        # waitForPageLoad()
+                navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        # productMethodsObject.createNewProduct(browser, 'shirt', mensSleevedShirtTypeList, color, 'Mens')
+                waitForPageLoad()
+
+                newItem = itemClasses.item(productType, 'shirt', color, True, gender='Mens')
+
+                productMethodsObject.createNewProduct(browser, newItem)
 
         # # sleeveless
 
-        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        for productType in mensSleevelessShirtTypeList:
 
-        # waitForPageLoad()
+                navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        # productMethodsObject.createNewProduct(browser, 'shirt',mensSleevelessShirtTypeList, color, 'Mens')
+                waitForPageLoad()
 
-        #### Women's shirts
+                newItem = itemClasses.item(productType, 'shirt', color, True, gender='Mens')
 
-        # # sleeved
+                productMethodsObject.createNewProduct(browser, newItem)
 
-        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        ### Women's shirts
 
-        # waitForPageLoad()
+        # sleeved
 
-        # productMethodsObject.createNewProduct(browser, 'shirt', womensSleevedShirtTypeList, color, 'Womens')
+        for productType in womensSleevedShirtTypeList:
+
+                navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+                waitForPageLoad()
+
+                newItem = itemClasses.item(productType, 'shirt', color, True, gender='Womens')
+
+                productMethodsObject.createNewProduct(browser, newItem)
 
         # # sleeveless
 
@@ -99,13 +111,13 @@ def main():
 
         # productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
 
-        ### Womens Leggings
+        # ### Womens Leggings
 
-        navigationFunctionsObject.navigateToWomensLeggings(browser)
+        # navigationFunctionsObject.navigateToWomensLeggings(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'leggings', womensLeggingsTypeList, color, 'Womens')
+        # productMethodsObject.createNewProduct(browser, 'leggings', womensLeggingsTypeList, color, 'Womens')
 
         # ### Womens Shorts
 
