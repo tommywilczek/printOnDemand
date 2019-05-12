@@ -43,11 +43,13 @@ class NavigationFunctions():
 
     def navigateToMensAllOverShirts(self, browser):
         # Prerequisite: goToChooseProduct
-        mensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[1]')
+        mensClothingButton = browser.find_element_by_xpath("//h3[text()= \"Men's clothing\"]")
 
         mensClothingButton.click()
 
-        allOverShirtsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[5]')
+        allOverShirtsButton = browser.find_element_by_xpath("//h3[text()='All-over shirts']")
+
+        browser.execute_script("arguments[0].scrollIntoView();", allOverShirtsButton)
 
         allOverShirtsButton.click()
 
