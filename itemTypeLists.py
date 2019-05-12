@@ -41,16 +41,12 @@ mensLeggingsTypeList = [
     'Leggings'
 ]
 
-womensLeggingsTypeList = [
-    'Plus Size Leggings',
-    'All-Over Print Leggings', #might mess up bc it's looking for the element that contains these words
+womensLeggingsTypeList = [ # includes womens shorts
+    # 'Plus Size Leggings',
+    # 'All-Over Print Leggings', 
     'Yoga Leggings',
     'Capri Leggings',
     'Yoga Capri Leggings',
     'Yoga Shorts',
-    'All-Over Print Shorts' #same as above
-]
-
-womensShortsTypeList = [
-    'All-Over Print Shorts'
+    'All-Over Print Shorts' 
 ]

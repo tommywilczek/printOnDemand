@@ -65,18 +65,6 @@ def main():
 
         createItemsFromItemTypeList(browser, womensLeggingsTypeList, 'leggings', color, 'Womens leggings', 'Womens')
 
-        # ### Womens Shorts
-
-        # navigationFunctionsObject.navigateToWomensShorts(browser)
-
-        # waitForPageLoad()
-
-        # ######### ATTENTION: STILL NEED TO MAKE THE OTHER TYPES OF womens SHORTS
-
-        # productMethodsObject.createFrontItem(browser, 'shorts', womensShortsTypeList, color, 'Womens')
-
-
-
 def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, navigateBackTo, gender=None):
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
@@ -129,11 +117,6 @@ mensShortsTypeList = itemTypeLists.mensShortsTypeList
 mensLeggingsTypeList = itemTypeLists.mensLeggingsTypeList
 
 womensLeggingsTypeList = itemTypeLists.womensLeggingsTypeList
-
-womensShortsTypeList = itemTypeLists.womensShortsTypeList
-
-
-# womensSleevedShirtTypeList
 
 
 if __name__ == "__main__":

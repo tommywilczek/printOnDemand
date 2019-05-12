@@ -20,6 +20,8 @@ class generateProductMethods():
 
         self.clickColorRadioButtonIfAvailable(browser, 'white')
 
+        self.clickPocketRadioButtonIfAvailable(browser)
+
         self.chooseColor(browser, newItem.colorName)
 
         self.chooseBackOfItemColorIfAvailable(browser, newItem)
@@ -54,6 +56,19 @@ class generateProductMethods():
         whiteRadioButton = browser.find_element_by_xpath(".//input[@type='radio' and @value='%s']" % color)
 
         whiteRadioButton.send_keys(Keys.SPACE) # click radio button
+
+    def clickPocketRadioButtonIfAvailable(self, browser):
+
+        radioButtonValue = '0'
+
+        try:
+            browser.find_element_by_xpath(".//input[@type='radio' and @value='%s']" % radioButtonValue)
+        except NoSuchElementException:
+            return 
+
+        hasPocketRadioButton = browser.find_element_by_xpath(".//input[@type='radio' and @value='%s']" % radioButtonValue)
+
+        hasPocketRadioButton.send_keys(Keys.SPACE) # click radio button
 
 
     def chooseBackOfItemColorIfAvailable(self, browser, newShirt):
