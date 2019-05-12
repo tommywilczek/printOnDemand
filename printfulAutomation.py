@@ -45,43 +45,25 @@ def main():
 
         # createItemsFromItemTypeList(browser, womensSleevelessShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-        # just front womens shirts
+        # # just front womens shirts
 
-        createItemsFromItemTypeList(browser, womensOneSidedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        # createItemsFromItemTypeList(browser, womensOneSidedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-        # ### Unisex sweatshirts
+        # # ### Unisex sweatshirts
 
-        createItemsFromItemTypeList(browser, sweatshirtTypeList, 'sweatshirt', color, 'Sweatshirts', 'Unisex')
-
-        # navigationFunctionsObject.navigateToSweatshirts(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'sweatshirt', sweatshirtTypeList, color, 'Unisex')
+        # createItemsFromItemTypeList(browser, sweatshirtTypeList, 'sweatshirt', color, 'Sweatshirts', 'Unisex')
 
         # ### Mens Shorts
 
-        # navigationFunctionsObject.navigateToMensShorts(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'shorts', mensShortsTypeList, color, 'Mens')
+        # createItemsFromItemTypeList(browser, mensShortsTypeList, 'shorts', color, 'Mens shorts', 'Mens')
 
         # ### Mens Leggings
 
-        # navigationFunctionsObject.navigateToMensLeggings(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
+        # createItemsFromItemTypeList(browser, mensLeggingsTypeList, 'leggings', color, 'Mens leggings', 'Mens')
 
         # ### Womens Leggings
 
-        # navigationFunctionsObject.navigateToWomensLeggings(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'leggings', womensLeggingsTypeList, color, 'Womens')
+        createItemsFromItemTypeList(browser, womensLeggingsTypeList, 'leggings', color, 'Womens leggings', 'Womens')
 
         # ### Womens Shorts
 
@@ -113,6 +95,12 @@ def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, n
                         navigationFunctionsObject.navigateToWomensAllOverShirts(browser) 
                 elif navigateBackTo == 'Sweatshirts':
                         navigationFunctionsObject.navigateToSweatshirts(browser)
+                elif navigateBackTo == 'Mens shorts':
+                        navigationFunctionsObject.navigateToMensShorts(browser)
+                elif navigateBackTo == 'Mens leggings':
+                        navigationFunctionsObject.navigateToMensLeggings(browser)
+                elif navigateBackTo == 'Womens leggings':
+                        navigationFunctionsObject.navigateToWomensLeggings(browser)
                 # Accessories, Home, etc.
 
                 waitForPageLoad()
