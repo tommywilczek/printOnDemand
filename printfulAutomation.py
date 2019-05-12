@@ -75,13 +75,13 @@ def main():
 
         # productMethodsObject.createNewProduct(browser, 'shirt', womensOneSidedShirtTypeList, color, 'Womens')
 
-        ### Unisex sweatshirts
+        # ### Unisex sweatshirts
 
-        navigationFunctionsObject.navigateToSweatshirts(browser)
+        # navigationFunctionsObject.navigateToSweatshirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'sweatshirt', sweatshirtTypeList, color, 'Unisex')
+        # productMethodsObject.createNewProduct(browser, 'sweatshirt', sweatshirtTypeList, color, 'Unisex')
 
         ### Mens Shorts
 

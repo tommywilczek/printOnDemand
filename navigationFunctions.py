@@ -66,13 +66,13 @@ class NavigationFunctions():
 
     def navigateToSweatshirts(self, browser):
         # Prerequisite: goToChooseProduct
-        sweatersButton = browser.find_element_by_xpath("//a[text()= 'Sweatshirts']")
+        sweatersButton = browser.find_element_by_xpath("//a[text()= 'Sweatshirts']") # Mens is the one that shows up first i nthe DOM. Womens is second.
 
         sweatersButton.click()
 
     def navigateToMensShorts(self, browser):
 
-        shortsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li[1]/ul/li[4]/ul/li[3]/a')
+        shortsButton = browser.find_element_by_xpath("//a[text()= 'Shorts']") # Mens is the one that shows up first i nthe DOM. Womens is second.
 
         shortsButton.click()
 
