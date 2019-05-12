@@ -24,27 +24,27 @@ class generateProductMethods():
 
             navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
 
-            generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
+            self.clickColorRadioButtonIfAvailable(browser, 'white')
 
-            generateProductMethods.chooseColor(self, browser, newItem.colorName)
+            self.chooseColor(browser, newItem.colorName)
 
-            generateProductMethods.chooseBackOfItemColorIfAvailable(self, browser, newItem)
+            self.chooseBackOfItemColorIfAvailable(browser, newItem)
 
-            generateProductMethods.chooseRightSleeveColorsIfAvailable(self, browser, newItem)
+            self.chooseRightSleeveColorsIfAvailable(browser, newItem)
 
-            generateProductMethods.chooseLeftSleeveColorsIfAvailable(self, browser, newItem)
+            self.chooseLeftSleeveColorsIfAvailable(browser, newItem)
 
-            generateProductMethods.chooseLeftLegColorIfAvailable(self, browser, newItem)
+            self.chooseLeftLegColorIfAvailable(browser, newItem)
 
             navigationFunctionsObject.proceedToProductDescription(browser)
             
-            generateProductMethods.createProductDescription(self, browser, newItem)
+            self.createProductDescription(browser, newItem)
 
             navigationFunctionsObject.proceedToPricing(browser)
 
-            generateProductMethods.upchargeByPercentage(self, browser)
+            self.upchargeByPercentage(browser)
 
-            generateProductMethods.submitProduct(self, browser, newItem)
+            self.submitProduct(browser, newItem)
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
@@ -74,7 +74,7 @@ class generateProductMethods():
 
     def chooseBackOfItemColorIfAvailable(self, browser, newShirt):
         
-        backOfItemTab = generateProductMethods.findElement(self, browser, 'back')
+        backOfItemTab = self.findElement(browser, 'back')
 
         if backOfItemTab == False:
             return
@@ -83,34 +83,34 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
+        self.chooseColor(browser, newShirt.colorName + '_mirror')
 
         printfulAutomation.waitForPageLoad()
 
     def chooseRightSleeveColorsIfAvailable(self, browser, newShirt):
 
-        rightSleeveTab = generateProductMethods.findElement(self, browser, 'right sleeve')
+        rightSleeveTab = self.findElement(browser, 'right sleeve')
 
         if rightSleeveTab == False:
             return
 
         rightSleeveTab.click()
 
-        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
+        self.chooseColor(browser, newShirt.colorName + '_mirror')
 
         printfulAutomation.waitForPageLoad()
 
 
     def chooseLeftSleeveColorsIfAvailable(self, browser, newShirt):
 
-        leftSleeveTab = generateProductMethods.findElement(self, browser, 'left sleeve')
+        leftSleeveTab = self.findElement(browser, 'left sleeve')
 
         if leftSleeveTab == False:
             return
 
         leftSleeveTab.click()
 
-        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
+        self.chooseColor(browser, newShirt.colorName + '_mirror')
 
         printfulAutomation.waitForPageLoad()
 
@@ -139,7 +139,7 @@ class generateProductMethods():
 
     def chooseLeftLegColorIfAvailable(self, browser, newItem):
 
-        leftLegTab = generateProductMethods.findElement(self, browser, 'left leg')
+        leftLegTab = self.findElement(browser, 'left leg')
 
         if leftLegTab == False:
             return
@@ -148,11 +148,11 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseColor(self, browser, newItem.colorName + '_mirror')
+        self.chooseColor(browser, newItem.colorName + '_mirror')
 
 
     def createProductDescription(self, browser, newShirt):
-        productDescription = generateProductMethods.generateProductDescription(self, browser, newShirt)
+        productDescription = self.generateProductDescription(browser, newShirt)
 
         productNameField = browser.find_element_by_class_name('form-control')
 
