@@ -10,7 +10,11 @@ parser = configparser.ConfigParser()
 
 parser.read('config.ini')
 
-printfulPassword = parser.get('passwords', 'printfulPassword')
+printfulUsername = parser.get('printful', 'printfulUsername')
+
+printfulPassword = parser.get('printful', 'printfulPassword')
+
+patternPopStoreId = parser.get('printful', 'patternPopStoreId')
 
 class NavigationFunctions():
 
@@ -21,12 +25,11 @@ class NavigationFunctions():
 
         passwordField = browser.find_element_by_id("customer-password")
 
-        emailField.send_keys("tommywilczek@gmail.com")
+        emailField.send_keys(printfulUsername)
 
         passwordField.send_keys(printfulPassword, Keys.ENTER)
 
     def goToChooseProduct(self, browser):
-        patternPopStoreId = '1354143'
         
         browser.get("https://www.printful.com/dashboard/sync?store=" + patternPopStoreId)
 
@@ -83,6 +86,16 @@ class NavigationFunctions():
     def navigateToMensLeggings(self, browser):
 
         leggingsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li[1]/ul/li[4]/ul/li[2]/a')
+
+        leggingsButton.click()
+
+    def navigateToWomensLeggings(self, browser):
+
+        womensClothingButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[2]/div[1]/div/a[2]')
+
+        womensClothingButton.click()
+
+        leggingsButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li/ul/li[4]/ul/li[2]/a')
 
         leggingsButton.click()
 

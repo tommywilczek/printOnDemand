@@ -33,13 +33,13 @@ def main():
 
         ### Men's shirts
 
-        # sleeved
+        # # sleeved
 
-        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shirt', mensSleevedShirtTypeList, color, 'Mens')
+        # productMethodsObject.createNewProduct(browser, 'shirt', mensSleevedShirtTypeList, color, 'Mens')
 
         # # sleeveless
 
@@ -49,58 +49,63 @@ def main():
 
         # productMethodsObject.createNewProduct(browser, 'shirt',mensSleevelessShirtTypeList, color, 'Mens')
 
-        # #### Women's shirts
+        #### Women's shirts
 
-        # # sleeved
+        # sleeved
 
-        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createNewProduct(browser, 'shirt', womensSleevedShirtTypeList, color, 'Womens')
+
+        # sleeveless
+
+        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createNewProduct(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
+
+        # just front womens shirts
+
+        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createNewProduct(browser, 'shirt', womensOneSidedShirtTypeList, color, 'Womens')
+
+        ### Unisex sweatshirts
+
+        navigationFunctionsObject.navigateToSweatshirts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createNewProduct(browser, 'sweatshirt', sweatshirtTypeList, color, 'Unisex')
+
+        ### Mens Shorts
+
+        navigationFunctionsObject.navigateToMensShorts(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createNewProduct(browser, 'shorts', mensShortsTypeList, color, 'Mens')
+
+        ### Mens Leggings
+
+        navigationFunctionsObject.navigateToMensLeggings(browser)
+
+        waitForPageLoad()
+
+        productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
+
+        # ### Womens Leggings
+
+        # navigationFunctionsObject.navigateToWomensLeggings(browser)
 
         # waitForPageLoad()
 
-        # productMethodsObject.createNewProduct(browser, 'shirt', womensSleevedShirtTypeList, color, 'Womens')
-
-        # # sleeveless
-
-        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
-
-        # # just front womens shirts
-
-        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'shirt', womensOneSidedShirtTypeList, color, 'Womens')
-
-        # ### Unisex sweatshirts
-
-        # navigationFunctionsObject.navigateToSweatshirts(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'sweatshirt', sweatshirtTypeList, color, 'Unisex')
-
-        # ### Mens Shorts
-
-        # navigationFunctionsObject.navigateToMensShorts(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'shorts', mensShortsTypeList, color, 'Mens')
-
-        # ### Mens Leggings
-
-        # navigationFunctionsObject.navigateToMensLeggings(browser)
-
-        # waitForPageLoad()
-
-        # productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Mens')
-
-
-        ### Womens Leggings
+        # productMethodsObject.createNewProduct(browser, 'leggings', mensLeggingsTypeList, color, 'Womens')
 
         # ### Womens Shorts
 

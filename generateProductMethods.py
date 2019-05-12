@@ -26,11 +26,15 @@ class generateProductMethods():
 
             generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
 
-            generateProductMethods.chooseFirstColor(self, browser, newItem.colorName)
+            generateProductMethods.chooseColor(self, browser, newItem.colorName)
 
             generateProductMethods.chooseBackOfItemColorIfAvailable(self, browser, newItem)
 
-            generateProductMethods.chooseSleeveColorsIfAvailable(self, browser, newItem)
+            generateProductMethods.chooseRightSleeveColorsIfAvailable(self, browser, newItem)
+
+            generateProductMethods.chooseLeftSleeveColorsIfAvailable(self, browser, newItem)
+
+            generateProductMethods.chooseLeftLegColorIfAvailable(self, browser, newItem)
 
             navigationFunctionsObject.proceedToProductDescription(browser)
             
@@ -70,50 +74,47 @@ class generateProductMethods():
 
     def chooseBackOfItemColorIfAvailable(self, browser, newShirt):
         
-        try:
-            browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
-        except NoSuchElementException:
-            return 
-        
-        backOfItemTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
+        backOfItemTab = generateProductMethods.findElement(self, browser, 'back')
+
+        if backOfItemTab == False:
+            return
 
         backOfItemTab.click()
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseFirstColor(self, browser, newShirt.colorName + '_mirror')
+        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
 
         printfulAutomation.waitForPageLoad()
 
-    def chooseSleeveColorsIfAvailable(self, browser, newShirt):
+    def chooseRightSleeveColorsIfAvailable(self, browser, newShirt):
 
-        try:
-            browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[3]/a/span')
-        except NoSuchElementException:
-            return 
+        rightSleeveTab = generateProductMethods.findElement(self, browser, 'right sleeve')
 
-        rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[3]/a/span')
+        if rightSleeveTab == False:
+            return
 
         rightSleeveTab.click()
 
-        generateProductMethods.chooseFirstColor(self, browser, newShirt.colorName + '_mirror')
+        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
 
         printfulAutomation.waitForPageLoad()
 
-        try:
-            browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[4]/a/span')
-        except NoSuchElementException:
-            return 
 
-        rightSleeveTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[4]/a/span')
+    def chooseLeftSleeveColorsIfAvailable(self, browser, newShirt):
 
-        rightSleeveTab.click()
+        leftSleeveTab = generateProductMethods.findElement(self, browser, 'left sleeve')
 
-        generateProductMethods.chooseFirstColor(self, browser, newShirt.colorName + '_mirror')
+        if leftSleeveTab == False:
+            return
+
+        leftSleeveTab.click()
+
+        generateProductMethods.chooseColor(self, browser, newShirt.colorName + '_mirror')
 
         printfulAutomation.waitForPageLoad()
 
-    def chooseFirstColor(self, browser, colorName):
+    def chooseColor(self, browser, colorName):
         uploadFileButton = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
 
         browser.execute_script("arguments[0].scrollIntoView();", uploadFileButton)
@@ -136,14 +137,18 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-    def chooseLeftLegColor(self, browser, newItem):
-        backOfItemTab = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div/div[2]/div[2]/div[1]/div/div[1]/ul/div/li[2]/a/span')
+    def chooseLeftLegColorIfAvailable(self, browser, newItem):
 
-        backOfItemTab.click()
+        leftLegTab = generateProductMethods.findElement(self, browser, 'left leg')
+
+        if leftLegTab == False:
+            return
+
+        leftLegTab.click()
 
         printfulAutomation.waitForPageLoad()
 
-        generateProductMethods.chooseFirstColor(self, browser, newItem.colorName + '_mirror')
+        generateProductMethods.chooseColor(self, browser, newItem.colorName + '_mirror')
 
 
     def createProductDescription(self, browser, newShirt):
@@ -194,3 +199,14 @@ class generateProductMethods():
         print('-----------')
         print('Created... \n', newItem.productStyle, newItem.productCategory, newItem.colorName, newItem.gender)
         print('-----------')
+
+    def findElement(self, browser, name):
+# Implement with javascript instead of xpath
+        name = name.lower()
+
+        try:
+            browser.find_element_by_xpath("//*[translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = \"%s\"]" % name)
+        except NoSuchElementException:
+            return False
+
+        return browser.find_element_by_xpath("//*[translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = \"%s\"]" % name)
