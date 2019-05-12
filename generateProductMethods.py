@@ -44,69 +44,10 @@ class generateProductMethods():
 
             navigationFunctionsObject.goToChooseProduct(browser)
 
-            printfulAutomation.waitForPageLoad()
-
             lastIndex = len(itemTypeList) - 1
 
             if index is not lastIndex: # How to return to accessories, etc?
 
-                if genderParameter == 'Mens':
-                    navigationFunctionsObject.navigateToMensAllOverShirts(browser)
-                elif genderParameter == 'Womens':
-                    navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
-            
-            printfulAutomation.waitForPageLoad()
-    # TODO: don't make a shirt subclass, just item... or maybe make more specific create methods?
-    def createAllSleevedShirts(self, browser, sleevedShirtTypeList, color, genderParameter):
-
-        navigationFunctionsObject = navigationFunctions.NavigationFunctions()
-
-        for index in range(len(sleevedShirtTypeList)):
-
-            newItem = itemClasses.item(sleevedShirtTypeList[index], 'shirt', color, True, gender=genderParameter)
-
-            navigationFunctionsObject = navigationFunctions.NavigationFunctions()
-
-            navigationFunctionsObject.navigateToCreateProductStyle(browser, newItem.productStyle)
-
-            printfulAutomation.waitForPageLoad()
-
-            generateProductMethods.clickColorRadioButtonIfAvailable(self, browser, 'white')
-
-            generateProductMethods.chooseFirstColor(self, browser, newItem.colorName)
-
-            printfulAutomation.waitForPageLoad()
-
-            generateProductMethods.chooseBackOfItemColorIfAvailable(self, browser, newItem)
-
-            printfulAutomation.waitForPageLoad()
-
-            generateProductMethods.chooseSleeveColorsIfAvailable(self, browser, newItem)
-
-            printfulAutomation.waitForPageLoad()
-
-            navigationFunctionsObject.proceedToProductDescription(browser)
-
-            printfulAutomation.waitForPageLoad()
-            
-            generateProductMethods.createProductDescription(self, browser, newItem)
-
-            navigationFunctionsObject.proceedToPricing(browser)
-
-            printfulAutomation.waitForPageLoad()
-
-            generateProductMethods.upchargeByPercentage(self, browser)
-
-            generateProductMethods.submitProduct(self, browser, newItem)
-
-            navigationFunctionsObject.goToChooseProduct(browser)
-
-            printfulAutomation.waitForPageLoad()
-
-            lastIndex = len(sleevedShirtTypeList) - 1
-
-            if index is not lastIndex:
-                print('not last index')
                 if genderParameter == 'Mens':
                     navigationFunctionsObject.navigateToMensAllOverShirts(browser)
                 elif genderParameter == 'Womens':

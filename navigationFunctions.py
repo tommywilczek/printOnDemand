@@ -58,7 +58,7 @@ class NavigationFunctions():
 
         allOverShirtsButton.click()
 
-    def navigateToSweaters(self, browser):
+    def navigateToSweatshirts(self, browser):
         # Prerequisite: goToChooseProduct
         sweatersButton = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[1]/div[3]/div/div[1]/div[2]/ul/li[1]/ul/li[3]/ul/li[2]/a')
 
