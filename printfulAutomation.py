@@ -33,47 +33,47 @@ def main():
 
         ### Men's shirts
 
-        # sleeved
+        # # sleeved
 
-        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shirt', mensSleevedShirtTypeList, color, 'Mens')
+        # productMethodsObject.createNewProduct(browser, 'shirt', mensSleevedShirtTypeList, color, 'Mens')
 
-        # sleeveless
+        # # sleeveless
 
-        navigationFunctionsObject.navigateToMensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToMensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shirt',mensSleevelessShirtTypeList, color, 'Mens')
+        # productMethodsObject.createNewProduct(browser, 'shirt',mensSleevelessShirtTypeList, color, 'Mens')
 
-        #### Women's shirts
+        # #### Women's shirts
 
-        # sleeved
+        # # sleeved
 
-        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shirt', womensSleevedShirtTypeList, color, 'Womens')
+        # productMethodsObject.createNewProduct(browser, 'shirt', womensSleevedShirtTypeList, color, 'Womens')
 
-        # sleeveless
+        # # sleeveless
 
-        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
+        # productMethodsObject.createNewProduct(browser, 'shirt', womensSleevelessShirtTypeList, color, 'Womens')
 
-        # just front womens shirts
+        # # just front womens shirts
 
-        navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
+        # navigationFunctionsObject.navigateToWomensAllOverShirts(browser)
 
-        waitForPageLoad()
+        # waitForPageLoad()
 
-        productMethodsObject.createNewProduct(browser, 'shirt', womensOneSidedShirtTypeList, color, 'Womens')
+        # productMethodsObject.createNewProduct(browser, 'shirt', womensOneSidedShirtTypeList, color, 'Womens')
 
         ### Unisex sweatshirts
 
