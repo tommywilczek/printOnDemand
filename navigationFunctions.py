@@ -105,10 +105,7 @@ class NavigationFunctions():
 
         leggingsButton.click()
 
-    def navigateToWomensSwimwear(self, browser):
-
-        self.navigateToWomensClothing(browser)
-
+    def navigateToSwimwear(self, browser):
         swimwearButton = browser.find_element_by_xpath("//h3[text()= 'Swimwear']")
 
         browser.execute_script("arguments[0].scrollIntoView();", swimwearButton)
@@ -117,11 +114,24 @@ class NavigationFunctions():
 
         swimwearButton.click()
 
+
+    def navigateToWomensSwimwear(self, browser):
+
+        self.navigateToWomensClothing(browser)
+
+        self.navigateToSwimwear(browser)
+
     def navigateToKidsAllOverShirts(self, browser):
 
         self.navigateToKidsClothing(browser)
 
         self.navigateToAllOverShirts(browser)
+
+    def navigateToKidsSwimwear(self, browser):
+
+        self.navigateToKidsClothing(browser)
+
+        self.navigateToSwimwear(browser)
 
 
     def navigateToCreateProductStyle(self, browser, productStyle):

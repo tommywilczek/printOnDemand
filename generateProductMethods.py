@@ -190,8 +190,6 @@ class generateProductMethods():
     def generateProductDescription(self, browser, newItem):
         if newItem.gender == 'Unisex':
             genderDescription = 'Mens Womens' # Usually says unisex in product style
-        if newItem.gender == 'Youth':
-            genderDescription = 'Teen'
         elif newItem.gender == None:
             genderDescription = ''
         else:
