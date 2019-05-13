@@ -67,7 +67,11 @@ def main():
 
         # Womens Swimwear
 
-        createItemsFromItemTypeList(browser, womensSwimwearTypeList, 'swimwear', color, 'Womens swimwear', 'Womens')
+        # createItemsFromItemTypeList(browser, womensSwimwearTypeList, 'swimwear', color, 'Womens swimwear', 'Womens')
+
+        # Kids Shirts
+
+        createItemsFromItemTypeList(browser, kidsShirtsTypeList, 'shirt', color, 'Kids all-over shirts', 'Kids')
 
 
 def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, navigateBackTo, gender=None):
@@ -96,6 +100,8 @@ def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, n
                         navigationFunctionsObject.navigateToWomensLeggings(browser)
                 elif navigateBackTo == 'Womens swimwear':
                         navigationFunctionsObject.navigateToWomensSwimwear(browser)
+                elif navigateBackTo == 'Kids all-over shirts':
+                        navigationFunctionsObject.navigateToKidsAllOverShirts(browser)
                 # Accessories, Home, etc.
 
                 waitForPageLoad()
@@ -126,6 +132,12 @@ mensLeggingsTypeList = itemTypeLists.mensLeggingsTypeList
 womensLeggingsTypeList = itemTypeLists.womensLeggingsTypeList
 
 womensSwimwearTypeList = itemTypeLists.womensSwimwearTypeList
+
+kidsShirtsTypeList = itemTypeLists.kidsShirtsTypeList
+
+kidsLeggingsTypeList = itemTypeLists.kidsLeggingsTypeList
+
+kidsSwimwearTypeList = itemTypeLists.kidsSwimwearTypeList
 
 if __name__ == "__main__":
     main()

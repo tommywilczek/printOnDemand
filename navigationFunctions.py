@@ -46,6 +46,14 @@ class NavigationFunctions():
 
         womensClothingButton.click()
 
+    def navigateToKidsClothing(self, browser):
+        kidsClothingButton = browser.find_element_by_xpath("//h3[text()= \"Kids & youth clothing\"]")
+
+        browser.execute_script("arguments[0].scrollIntoView();", kidsClothingButton)
+
+        kidsClothingButton.click()
+
+
     def navigateToAllOverShirts(self, browser):
         allOverShirtsButton = browser.find_element_by_xpath("//h3[text()='All-over shirts']")
 
@@ -108,6 +116,12 @@ class NavigationFunctions():
         printfulAutomation.waitForPageLoad()
 
         swimwearButton.click()
+
+    def navigateToKidsAllOverShirts(self, browser):
+
+        self.navigateToKidsClothing(browser)
+
+        self.navigateToAllOverShirts(browser)
 
 
     def navigateToCreateProductStyle(self, browser, productStyle):

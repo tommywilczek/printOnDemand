@@ -57,3 +57,18 @@ womensSwimwearTypeList = [
     'Bikini Top',
     'Bikini Bottom'
 ]
+
+kidsShirtsTypeList = [
+    'Youth Sublimation Tee',
+    'Toddler Sublimation Tee'
+]
+
+kidsLeggingsTypeList = [
+    'Kids Leggings',
+    'Youth Leggings'
+]
+
+kidsSwimwearTypeList = [
+    'Kids Swimsuit',
+    'Youth Swimsuit'
+]
