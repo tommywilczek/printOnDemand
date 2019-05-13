@@ -205,7 +205,7 @@ class generateProductMethods():
 
     def upchargeByPercentage(self, browser, ):
         # Must be in 'pricing' stage of create product
-        dollarOrPercentageDropdown = browser.find_element_by_xpath('//*[@id="modal-1"]/div/div/div[1]/div[2]/div/div[3]/div/div[2]/div[2]/div[2]/table/thead/tr[2]/td[4]/span[2]/select/option[1]') 
+        dollarOrPercentageDropdown = browser.find_element_by_xpath('.//option[ @value=\"%\"]') 
 
         dollarOrPercentageDropdown.click()
 
@@ -213,7 +213,9 @@ class generateProductMethods():
 
         numberToIncreaseField.clear()
 
-        numberToIncreaseField.send_keys('15')
+        upchargePercentage = '15'
+
+        numberToIncreaseField.send_keys(upchargePercentage)
 
     def submitProduct(self, browser, newItem):
 
