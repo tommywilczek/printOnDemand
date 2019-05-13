@@ -199,7 +199,7 @@ class generateProductMethods():
 
         productKeywords = keywordLookup.keywordDict[newItem.productCategory]
 
-        companyName = 'Pattern Pop'
+        companyName = 'Güd Vibes'
 
         return companyName, ' ', colorName, ' ' , newItem.productStyle, ' ' ,productKeywords, ' ', genderDescription 
 
