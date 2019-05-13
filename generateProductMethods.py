@@ -197,7 +197,10 @@ class generateProductMethods():
 
         colorName = newItem.colorName.replace('-', ' ')
 
-        productKeywords = keywordLookup.keywordDict[newItem.productCategory]
+        if keywordLookup.keywordDict.get(newItem.productCategory) is not None:
+            productKeywords = keywordLookup.keywordDict[newItem.productCategory]
+        else:
+            productKeywords = ''
 
         companyName = 'Güd Vibes'
 
@@ -228,7 +231,7 @@ class generateProductMethods():
         print('-----------')
 
     def findElement(self, browser, name):
-# Implement with javascript instead of xpath
+
         name = name.lower()
 
         try:

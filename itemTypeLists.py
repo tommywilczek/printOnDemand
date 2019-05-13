@@ -50,3 +50,10 @@ womensLeggingsTypeList = [ # includes womens shorts
     'Yoga Shorts',
     'All-Over Print Shorts' 
 ]
+
+womensSwimwearTypeList = [
+    'One-Piece Swimsuit',
+    'All-Over Print Bikini',
+    'Bikini Top',
+    'Bikini Bottom'
+]
