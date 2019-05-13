@@ -22,19 +22,27 @@ class generateProductMethods():
 
         self.clickPocketRadioButtonIfAvailable(browser)
 
-        self.chooseColor(browser, newItem.colorName)
+        self.chooseColor(browser, newItem.colorName) # first color
 
-        self.chooseBackOfItemColorIfAvailable(browser, newItem)
+        self.chooseItemColorIfAvailable(browser, 'back', newItem.colorName, True)
 
-        self.chooseRightSleeveColorIfAvailable(browser, newItem)
+        self.chooseItemColorIfAvailable(browser, 'right sleeve', newItem.colorName, True)
 
-        self.chooseLeftSleeveColorIfAvailable(browser, newItem)
+        self.chooseItemColorIfAvailable(browser, 'left sleeve', newItem.colorName, True)
 
-        self.chooseLeftLegColorIfAvailable(browser, newItem)
+        self.chooseItemColorIfAvailable(browser, 'left leg', newItem.colorName, True)
 
-        self.chooseFrontWaistColorIfAvailable(browser, newItem)
+        self.chooseItemColorIfAvailable(browser, 'front waist', newItem.colorName)
 
-        self.chooseBackWaistColorsIfAvailable(browser, newItem)
+        self.chooseItemColorIfAvailable(browser, 'back waist', newItem.colorName, True)
+
+        self.chooseItemColorIfAvailable(browser, 'top', newItem.colorName)
+
+        self.chooseItemColorIfAvailable(browser, 'inside pocket', newItem.colorName)
+
+        self.chooseItemColorIfAvailable(browser, 'top panel', newItem.colorName)
+
+        self.chooseItemColorIfAvailable(browser, 'bottom panel', newItem.colorName)
 
         navigationFunctionsObject.proceedToProductDescription(browser)
         
@@ -70,85 +78,19 @@ class generateProductMethods():
 
         hasPocketRadioButton.send_keys(Keys.SPACE) # click radio button
 
+    def chooseItemColorIfAvailable(self, browser, itemPiece, color, mirror=False):
 
-    def chooseBackOfItemColorIfAvailable(self, browser, newShirt):
-        
-        backOfItemTab = self.findElement(browser, 'back')
+        itemPieceTab = self.findElement(browser, itemPiece)
 
-        if backOfItemTab == False:
+        if itemPieceTab == False:
             return
 
-        backOfItemTab.click()
+        itemPieceTab.click()
 
-        printfulAutomation.waitForPageLoad()
+        if mirror:
+            color += '_mirror'
 
-        self.chooseColor(browser, newShirt.colorName + '_mirror')
-
-        printfulAutomation.waitForPageLoad()
-
-    def chooseRightSleeveColorIfAvailable(self, browser, newShirt):
-
-        rightSleeveTab = self.findElement(browser, 'right sleeve')
-
-        if rightSleeveTab == False:
-            return
-
-        rightSleeveTab.click()
-
-        self.chooseColor(browser, newShirt.colorName + '_mirror')
-
-        printfulAutomation.waitForPageLoad()
-
-
-    def chooseLeftSleeveColorIfAvailable(self, browser, newShirt):
-
-        leftSleeveTab = self.findElement(browser, 'left sleeve')
-
-        if leftSleeveTab == False:
-            return
-
-        leftSleeveTab.click()
-
-        self.chooseColor(browser, newShirt.colorName + '_mirror')
-
-        printfulAutomation.waitForPageLoad()
-
-    def chooseLeftLegColorIfAvailable(self, browser, newShirt):
-
-        leftLegTab = self.findElement(browser, 'left leg')
-
-        if leftLegTab == False:
-            return
-
-        leftLegTab.click()
-
-        self.chooseColor(browser, newShirt.colorName + '_mirror')
-
-        printfulAutomation.waitForPageLoad()
-
-    def chooseFrontWaistColorIfAvailable(self, browser, newShirt):
-
-        frontWaistTab = self.findElement(browser, 'front waist')
-
-        if frontWaistTab == False:
-            return
-
-        frontWaistTab.click()
-
-        self.chooseColor(browser, newShirt.colorName)
-
-        printfulAutomation.waitForPageLoad()
-
-    def chooseBackWaistColorsIfAvailable(self, browser, newShirt):
-
-        backWaistTab = self.findElement(browser, 'back waist')
-
-        if backWaistTab == False:
-            return
-
-        backWaistTab.click()
-
-        self.chooseColor(browser, newShirt.colorName + '_mirror')
+        self.chooseColor(browser, color)
 
         printfulAutomation.waitForPageLoad()
 
@@ -176,8 +118,8 @@ class generateProductMethods():
 
         printfulAutomation.waitForPageLoad()
 
-    def createProductDescription(self, browser, newShirt):
-        productDescription = self.generateProductDescription(browser, newShirt)
+    def createProductDescription(self, browser, newItem):
+        productDescription = self.generateProductDescription(browser, newItem)
 
         productNameField = browser.find_element_by_class_name('form-control')
 

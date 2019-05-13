@@ -39,7 +39,7 @@ def main():
 
         # # sleeved
 
-        # createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
         # # sleeveless
 
@@ -75,7 +75,11 @@ def main():
 
         # Kids swimwear
 
-        createItemsFromItemTypeList(browser, kidsSwimwearTypeList, 'swimwear', color, 'Kids swimwear', 'Kids')
+        # createItemsFromItemTypeList(browser, kidsSwimwearTypeList, 'swimwear', color, 'Kids swimwear', 'Kids')
+
+        # Bags
+                                                # MAKE A LIST TO FIND MULTIPLE KEYWORDS
+        # createItemsFromItemTypeList(browser, bagsTypeList, 'backpack', color, 'Bags')
 
 def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, navigateBackTo, gender=None):
 
@@ -107,6 +111,8 @@ def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, n
                         navigationFunctionsObject.navigateToKidsAllOverShirts(browser)
                 elif navigateBackTo == 'Kids swimwear':
                         navigationFunctionsObject.navigateToKidsSwimwear(browser)
+                elif navigateBackTo == 'Bags':
+                        navigationFunctionsObject.navigateToBags(browser)
 
                 waitForPageLoad()
 
@@ -142,6 +148,8 @@ kidsShirtsTypeList = itemTypeLists.kidsShirtsTypeList
 kidsLeggingsTypeList = itemTypeLists.kidsLeggingsTypeList
 
 kidsSwimwearTypeList = itemTypeLists.kidsSwimwearTypeList
+
+bagsTypeList = itemTypeLists.bagsTypeList
 
 if __name__ == "__main__":
     main()

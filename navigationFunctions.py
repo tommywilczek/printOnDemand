@@ -133,6 +133,26 @@ class NavigationFunctions():
 
         self.navigateToSwimwear(browser)
 
+    def navigateToAccessories(self, browser):
+
+        accessoriesButton = browser.find_element_by_xpath("//h3[text()= 'Accessories']")
+
+        accessoriesButton.click()
+
+
+    def navigateToBags(self, browser):
+
+        self.navigateToAccessories(browser)
+
+        bagsButton = browser.find_element_by_xpath("//a[text()= 'Bags']")
+
+        browser.execute_script("arguments[0].scrollIntoView();", bagsButton)
+
+        printfulAutomation.waitForPageLoad()
+
+        bagsButton.click()
+
+
 
     def navigateToCreateProductStyle(self, browser, productStyle):
         # Prerequisite: Must be in a category, like navigateToMensAllOverShirts
