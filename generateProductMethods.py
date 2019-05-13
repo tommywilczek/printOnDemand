@@ -22,6 +22,8 @@ class generateProductMethods():
 
         self.clickPocketRadioButtonIfAvailable(browser)
 
+        self.clickAllColorsCheckboxIfAvailable(browser)
+
         self.chooseColor(browser, newItem.colorName) # first color
 
         self.chooseItemColorIfAvailable(browser, 'back', newItem.colorName, True)
@@ -77,6 +79,22 @@ class generateProductMethods():
         hasPocketRadioButton = browser.find_element_by_xpath(".//input[@type='radio' and @value='%s']" % radioButtonValue)
 
         hasPocketRadioButton.send_keys(Keys.SPACE) # click radio button
+
+    def clickAllColorsCheckboxIfAvailable(self, browser):
+
+        checkboxValue = 'Select all colors'
+
+        try:
+            browser.find_element_by_xpath(".//span[text()='%s']" % checkboxValue)
+        except NoSuchElementException:
+            return 
+        
+
+        allColorsCheckbox = browser.find_element_by_xpath(".//span[text()='%s']" % checkboxValue)
+
+        browser.execute_script("arguments[0].scrollIntoView();", allColorsCheckbox)
+
+        allColorsCheckbox.click()
 
     def chooseItemColorIfAvailable(self, browser, itemPiece, color, mirror=False):
 

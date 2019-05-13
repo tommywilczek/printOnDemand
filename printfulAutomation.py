@@ -39,7 +39,7 @@ def main():
 
         # # sleeved
 
-        createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        # createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
         # # sleeveless
 
@@ -79,7 +79,7 @@ def main():
 
         # Bags
                                                 # MAKE A LIST TO FIND MULTIPLE KEYWORDS
-        # createItemsFromItemTypeList(browser, bagsTypeList, 'backpack', color, 'Bags')
+        createItemsFromItemTypeList(browser, bagsTypeList, 'backpack', color, 'Bags')
 
 def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, navigateBackTo, gender=None):
 
