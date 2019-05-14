@@ -1,20 +1,20 @@
 mensSleevedShirtTypeList = [
-    # 'Athletic T-Shirt',
-    # 'Crew Neck T-Shirt',
+    'Athletic T-Shirt',
+    'Crew Neck T-Shirt',
     'Rash Guard',
     'V-Neck T-Shirt'
 ]
 
 mensSleevelessShirtTypeList = [
-    # 'Tank Top',
+    'Tank Top',
     'Sublimation T-Shirt',
     'Sublimation Tank'
 ]
 
 womensSleevedShirtTypeList = [
-    # 'Athletic T-Shirt',
-    # 'Crew Neck T-Shirt',
-    # 'Crop Tee',
+    'Athletic T-Shirt',
+    'Crew Neck T-Shirt',
+    'Crop Tee',
     'Rash Guard',
     'V-Neck T-Shirt'
 ]
@@ -44,7 +44,7 @@ mensLeggingsTypeList = [
 womensLeggingsTypeList = [ # includes womens shorts
     # 'Plus Size Leggings',
     # 'All-Over Print Leggings', 
-    'Yoga Leggings',
+    # 'Yoga Leggings',
     'Capri Leggings',
     'Yoga Capri Leggings',
     'Yoga Shorts',
@@ -64,8 +64,8 @@ kidsShirtsTypeList = [
 ]
 
 kidsLeggingsTypeList = [
-    'Kids Leggings',
-    'Youth Leggings'
+    'All-Over Print Kids Leggings',
+    'All-Over Print Youth Leggings'
 ]
 
 kidsSwimwearTypeList = [
@@ -75,8 +75,12 @@ kidsSwimwearTypeList = [
 
 bagsTypeList = [
     # 'Fanny Pack',
-    'All-Over Print Tote',
-    'Backpack',
-    'Drawstring Bag',
+    # 'All-Over Print Tote',
+    # 'Backpack',
+    # 'Drawstring Bag',
     'Beach Bag'
+]
+
+flipFlopsTypeList = [
+    'Sublimation Flip-Flops'
 ]

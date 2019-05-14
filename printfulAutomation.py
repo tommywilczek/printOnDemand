@@ -29,57 +29,65 @@ def main():
 
         # # sleeved
 
-        # createItemsFromItemTypeList(browser, mensSleevedShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
+        createItemsFromItemTypeList(browser, mensSleevedShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
 
         # # sleeveless
 
-        # createItemsFromItemTypeList(browser, mensSleevelessShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
+        createItemsFromItemTypeList(browser, mensSleevelessShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
 
-        # ### Women's shirts
+        ### Women's shirts
 
-        # # sleeved
+        # sleeved
 
-        # createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-        # # sleeveless
+        # sleeveless
 
-        # createItemsFromItemTypeList(browser, womensSleevelessShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        createItemsFromItemTypeList(browser, womensSleevelessShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-        # # just front womens shirts
+        # just front womens shirts
 
-        # createItemsFromItemTypeList(browser, womensOneSidedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        createItemsFromItemTypeList(browser, womensOneSidedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-        # # ### Unisex sweatshirts
+        ### Unisex sweatshirts
 
-        # createItemsFromItemTypeList(browser, sweatshirtTypeList, 'sweatshirt', color, 'Sweatshirts', 'Unisex')
+        createItemsFromItemTypeList(browser, sweatshirtTypeList, 'sweatshirt', color, 'Sweatshirts', 'Unisex')
 
-        # ### Mens Shorts
+        ### Mens Shorts
 
-        # createItemsFromItemTypeList(browser, mensShortsTypeList, 'shorts', color, 'Mens shorts', 'Mens')
+        createItemsFromItemTypeList(browser, mensShortsTypeList, 'shorts', color, 'Mens shorts', 'Mens')
 
-        # ### Mens Leggings
+        ### Mens Leggings
 
-        # createItemsFromItemTypeList(browser, mensLeggingsTypeList, 'leggings', color, 'Mens leggings', 'Mens')
+        createItemsFromItemTypeList(browser, mensLeggingsTypeList, 'leggings', color, 'Mens leggings', 'Mens')
 
-        # ### Womens Leggings
+        ### Womens Leggings
 
-        # createItemsFromItemTypeList(browser, womensLeggingsTypeList, 'leggings', color, 'Womens leggings', 'Womens')
+        createItemsFromItemTypeList(browser, womensLeggingsTypeList, 'leggings', color, 'Womens leggings', 'Womens')
 
         # Womens Swimwear
 
-        # createItemsFromItemTypeList(browser, womensSwimwearTypeList, 'swimwear', color, 'Womens swimwear', 'Womens')
+        createItemsFromItemTypeList(browser, womensSwimwearTypeList, 'swimwear', color, 'Womens swimwear', 'Womens')
 
         # Kids Shirts
 
-        # createItemsFromItemTypeList(browser, kidsShirtsTypeList, 'shirt', color, 'Kids all-over shirts', 'Kids')
+        createItemsFromItemTypeList(browser, kidsShirtsTypeList, 'shirt', color, 'Kids all-over shirts', 'Kids')
+
+        # Kids Leggings
+
+        createItemsFromItemTypeList(browser, kidsLeggingsTypeList, 'leggings', color, 'Kids leggings', 'Kids')
 
         # Kids swimwear
 
-        # createItemsFromItemTypeList(browser, kidsSwimwearTypeList, 'swimwear', color, 'Kids swimwear', 'Kids')
+        createItemsFromItemTypeList(browser, kidsSwimwearTypeList, 'swimwear', color, 'Kids swimwear', 'Kids')
 
         # Bags
-                                                # MAKE A LIST TO FIND MULTIPLE KEYWORDS
+
         createItemsFromItemTypeList(browser, bagsTypeList, 'bag', color, 'Bags')
+
+        # Flip Flops
+
+        # createItemsFromItemTypeList(browser, bagsTypeList, 'Flip-Flops', color, 'Flip-Flops', 'Unisex')
 
 def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, navigateBackTo, gender=None):
 
@@ -109,10 +117,14 @@ def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, n
                         navigationFunctionsObject.navigateToWomensSwimwear(browser)
                 elif navigateBackTo == 'Kids all-over shirts':
                         navigationFunctionsObject.navigateToKidsAllOverShirts(browser)
+                elif navigateBackTo == 'Kids leggings':
+                        navigationFunctionsObject.navigateToKidsLeggings(browser)
                 elif navigateBackTo == 'Kids swimwear':
                         navigationFunctionsObject.navigateToKidsSwimwear(browser)
                 elif navigateBackTo == 'Bags':
                         navigationFunctionsObject.navigateToBags(browser)
+                elif navigateBackTo == 'Flip-Flops':
+                        navigationFunctionsObject.navigateToFlipFlops(browser)
 
                 waitForPageLoad()
 
@@ -123,7 +135,7 @@ def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, n
 
 
 def waitForPageLoad():
-    time.sleep(1)
+    time.sleep(2)
 
 
 mensSleevedShirtTypeList = itemTypeLists.mensSleevedShirtTypeList
@@ -151,5 +163,13 @@ kidsSwimwearTypeList = itemTypeLists.kidsSwimwearTypeList
 
 bagsTypeList = itemTypeLists.bagsTypeList
 
+flipFlopsTypeList = itemTypeLists.flipFlopsTypeList
+
 if __name__ == "__main__":
+    beginningTime = time.time()
     main()
+    endTime = time.time()
+
+    total = endTime - beginningTime
+
+    print(total)

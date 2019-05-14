@@ -40,7 +40,8 @@ class generateProductMethods():
 
         self.chooseItemColorIfAvailable(browser, 'top', newItem.colorName)
 
-        self.chooseItemColorIfAvailable(browser, 'inside pocket', newItem.colorName)
+        if newItem.productCategory == 'bag': # don't get confused with inside pocket radio btn
+            self.chooseItemColorIfAvailable(browser, 'inside pocket', newItem.colorName)
 
         self.chooseItemColorIfAvailable(browser, 'top panel', newItem.colorName)
 
@@ -105,6 +106,8 @@ class generateProductMethods():
         if itemPieceTab == False:
             return
 
+        browser.execute_script("arguments[0].scrollIntoView();", itemPieceTab)
+
         itemPieceTab.click()
 
         if mirror:
@@ -163,17 +166,13 @@ class generateProductMethods():
 
         if newItem.productCategory == 'bag':
             keywordKey = newItem.productStyle
-            print('BAG: keyword key,', keywordKey)
         else:
             keywordKey = newItem.productCategory
-            print('not bag, keyword key,', keywordKey)
 
         if keywordLookup.keywordDict.get(keywordKey) is not None:
             productKeywords = keywordLookup.keywordDict[keywordKey]
-            print('found keywords:', productKeywords)
         else:
             productKeywords = ''
-            print('no keywords')
 
         companyName = 'Güd Vibes'
 
@@ -197,7 +196,7 @@ class generateProductMethods():
 
         navigationFunctionsObject = navigationFunctions.NavigationFunctions()
 
-        # navigationFunctionsObject.clickSubmitButton(browser)
+        navigationFunctionsObject.clickSubmitButton(browser)
 
         print('-----------')
         print('Created... \n', newItem.productStyle, newItem.productCategory, newItem.colorName, newItem.gender)

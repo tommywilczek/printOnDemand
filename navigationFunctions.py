@@ -92,10 +92,8 @@ class NavigationFunctions():
         leggingsButton = browser.find_element_by_xpath("//a[text()= 'Leggings']") # Mens is the one that shows up first i nthe DOM. Womens is second.
 
         leggingsButton.click()
-
-    def navigateToWomensLeggings(self, browser):
-
-        self.navigateToWomensClothing(browser)
+    
+    def navigateToLeggings(self, browser):
 
         leggingsButton = browser.find_element_by_xpath("//h3[text()= 'Leggings']")
 
@@ -104,6 +102,12 @@ class NavigationFunctions():
         printfulAutomation.waitForPageLoad()
 
         leggingsButton.click()
+
+    def navigateToWomensLeggings(self, browser):
+
+        self.navigateToWomensClothing(browser)
+
+        self.navigateToLeggings(browser)
 
     def navigateToSwimwear(self, browser):
         swimwearButton = browser.find_element_by_xpath("//h3[text()= 'Swimwear']")
@@ -126,6 +130,12 @@ class NavigationFunctions():
         self.navigateToKidsClothing(browser)
 
         self.navigateToAllOverShirts(browser)
+
+    def navigateToKidsLeggings(self, browser):
+
+        self.navigateToKidsClothing(browser)
+
+        self.navigateToLeggings(browser)
 
     def navigateToKidsSwimwear(self, browser):
 
@@ -151,6 +161,18 @@ class NavigationFunctions():
         printfulAutomation.waitForPageLoad()
 
         bagsButton.click()
+
+    def navigateToFlipFlops(self, browser):
+
+        self.navigateToAccessories(browser)
+
+        flipFlopsButton = browser.find_element_by_xpath("//a[text()= 'Flip flops']")
+
+        browser.execute_script("arguments[0].scrollIntoView();", flipFlopsButton)
+
+        printfulAutomation.waitForPageLoad()
+
+        flipFlopsButton.click()
 
 
 
