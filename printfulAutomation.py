@@ -79,7 +79,7 @@ def main():
 
         # Bags
                                                 # MAKE A LIST TO FIND MULTIPLE KEYWORDS
-        createItemsFromItemTypeList(browser, bagsTypeList, 'backpack', color, 'Bags')
+        createItemsFromItemTypeList(browser, bagsTypeList, 'bag', color, 'Bags')
 
 def createItemsFromItemTypeList(browser, itemTypeList, productCategory, color, navigateBackTo, gender=None):
 

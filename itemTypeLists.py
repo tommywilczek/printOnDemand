@@ -75,8 +75,8 @@ kidsSwimwearTypeList = [
 
 bagsTypeList = [
     # 'Fanny Pack',
-    # 'All-Over Print Tote',
-    # 'Backpack',
-    # 'Drawstring Bag',
+    'All-Over Print Tote',
+    'Backpack',
+    'Drawstring Bag',
     'Beach Bag'
 ]

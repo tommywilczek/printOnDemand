@@ -96,6 +96,8 @@ class generateProductMethods():
 
         allColorsCheckbox.click()
 
+        printfulAutomation.waitForPageLoad()
+
     def chooseItemColorIfAvailable(self, browser, itemPiece, color, mirror=False):
 
         itemPieceTab = self.findElement(browser, itemPiece)
@@ -145,6 +147,8 @@ class generateProductMethods():
 
         productNameField.send_keys(productDescription)
 
+        time.sleep(2)
+
         productNameField.send_keys(Keys.ENTER)
 
     def generateProductDescription(self, browser, newItem):
@@ -157,10 +161,19 @@ class generateProductMethods():
 
         colorName = newItem.colorName.replace('-', ' ')
 
-        if keywordLookup.keywordDict.get(newItem.productCategory) is not None:
-            productKeywords = keywordLookup.keywordDict[newItem.productCategory]
+        if newItem.productCategory == 'bag':
+            keywordKey = newItem.productStyle
+            print('BAG: keyword key,', keywordKey)
+        else:
+            keywordKey = newItem.productCategory
+            print('not bag, keyword key,', keywordKey)
+
+        if keywordLookup.keywordDict.get(keywordKey) is not None:
+            productKeywords = keywordLookup.keywordDict[keywordKey]
+            print('found keywords:', productKeywords)
         else:
             productKeywords = ''
+            print('no keywords')
 
         companyName = 'Güd Vibes'
 
