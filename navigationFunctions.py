@@ -2,6 +2,10 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as ec
+
 import configparser
 
 import printfulAutomation
@@ -33,9 +37,11 @@ class NavigationFunctions():
         
         browser.get("https://www.printful.com/dashboard/sync?store=" + patternPopStoreId)
 
-        printfulAutomation.waitForPageLoad()
+        # printfulAutomation.waitForPageLoad()
 
-        addProductButton = browser.find_element_by_xpath("//*[text()='Add product']")
+        # addProductButton = browser.find_element_by_xpath("//*[text()='Add product']")
+
+        addProductButton = self.waitUntilElementLocatedByXpath(browser, "//*[text()='Add product']")
 
         addProductButton.click()
 
@@ -55,7 +61,9 @@ class NavigationFunctions():
 
 
     def navigateToAllOverShirts(self, browser):
-        allOverShirtsButton = browser.find_element_by_xpath("//h3[text()='All-over shirts']")
+        # allOverShirtsButton = browser.find_element_by_xpath("//h3[text()='All-over shirts']")
+
+        allOverShirtsButton = self.waitUntilElementLocatedByXpath(browser, "//h3[text()='All-over shirts']")
 
         browser.execute_script("arguments[0].scrollIntoView();", allOverShirtsButton)
 
@@ -63,7 +71,9 @@ class NavigationFunctions():
 
     def navigateToMensAllOverShirts(self, browser):
         # Prerequisite: goToChooseProduct
-        mensClothingButton = browser.find_element_by_xpath("//h3[text()= \"Men's clothing\"]")
+        # mensClothingButton = browser.find_element_by_xpath("//h3[text()= \"Men's clothing\"]")
+
+        mensClothingButton = self.waitUntilElementLocatedByXpath(browser, "//h3[text()= \"Men's clothing\"]")
 
         mensClothingButton.click()
 
@@ -145,7 +155,9 @@ class NavigationFunctions():
 
     def navigateToAccessories(self, browser):
 
-        accessoriesButton = browser.find_element_by_xpath("//h3[text()= 'Accessories']")
+        accessoriesButton = self.waitUntilElementLocatedByXpath(browser, "//h3[text()= 'Accessories']")
+
+        # accessoriesButton = browser.find_element_by_xpath("//h3[text()= 'Accessories']")
 
         accessoriesButton.click()
 
@@ -154,11 +166,11 @@ class NavigationFunctions():
 
         self.navigateToAccessories(browser)
 
-        bagsButton = browser.find_element_by_xpath("//a[text()= 'Bags']")
+        bagsButton = self.waitUntilElementLocatedByXpath(browser, "//a[text()= 'Bags']")
+
+        # bagsButton = browser.find_element_by_xpath("//a[text()= 'Bags']")
 
         browser.execute_script("arguments[0].scrollIntoView();", bagsButton)
-
-        printfulAutomation.waitForPageLoad()
 
         bagsButton.click()
 
@@ -180,33 +192,48 @@ class NavigationFunctions():
         # Prerequisite: Must be in a category, like navigateToMensAllOverShirts
         productStyleButton = browser.find_elements_by_xpath("//*[contains(text(), '%s')]" % productStyle)[-1] #last one in the ist AKA theone in the modal
 
+        # productStyleButton = self.waitUntilElementLocatedByXpath(browser, "//*[contains(text(), '" + productStyle + "')]")
+
         productStyleButton.click()
 
         printfulAutomation.waitForPageLoad()
 
 
     def proceedToProductDescription(self, browser):
-        proceedToMockupsButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to mockups')]")
+        # proceedToMockupsButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to mockups')]")
+
+        proceedToMockupsButton = self.waitUntilElementLocatedByXpath(browser, "//*[contains(text(), 'Proceed to mockups')]")
 
         proceedToMockupsButton.click()
 
-        proceedToDescriptionButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to description')]")
+        # proceedToDescriptionButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to description')]")
+
+        proceedToDescriptionButton = self.waitUntilElementLocatedByXpath(browser, "//*[contains(text(), 'Proceed to description')]")
 
         proceedToDescriptionButton.click()
 
         printfulAutomation.waitForPageLoad()
 
     def proceedToPricing(self, browser):
-        proceedToPricingButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to pricing')]")
+        # proceedToPricingButton = browser.find_element_by_xpath("//*[contains(text(), 'Proceed to pricing')]")
+
+        proceedToPricingButton = self.waitUntilElementLocatedByXpath(browser, "//*[contains(text(), 'Proceed to pricing')]")
 
         proceedToPricingButton.click()
 
         printfulAutomation.waitForPageLoad()
 
     def clickSubmitButton(self, browser):
-        submitItemButton = browser.find_element_by_xpath("//*[contains(text(), 'Submit to store')]")
+        # submitItemButton = browser.find_element_by_xpath("//*[contains(text(), 'Submit to store')]")
+
+        submitItemButton = self.waitUntilElementLocatedByXpath(browser, "//*[contains(text(), 'Submit to store')]")
 
         submitItemButton.click()
 
+    def waitUntilElementLocatedByXpath(self, browser, xpath):
+        wait = WebDriverWait(browser, 10)
 
+        elementToInteractWith = wait.until(ec.visibility_of_element_located((By.XPATH, xpath)))
+
+        return elementToInteractWith
 

@@ -2,7 +2,7 @@ mensSleevedShirtTypeList = [
     'Athletic T-Shirt',
     'Crew Neck T-Shirt',
     'Rash Guard',
-    'V-Neck T-Shirt'
+    'V-Neck T-Shirt' #30 min per item
 ]
 
 mensSleevelessShirtTypeList = [
@@ -42,9 +42,9 @@ mensLeggingsTypeList = [
 ]
 
 womensLeggingsTypeList = [ # includes womens shorts
-    # 'Plus Size Leggings',
-    # 'All-Over Print Leggings', 
-    # 'Yoga Leggings',
+    'Plus Size Leggings',
+    'All-Over Print Leggings', 
+    'Yoga Leggings',
     'Capri Leggings',
     'Yoga Capri Leggings',
     'Yoga Shorts',
@@ -74,11 +74,11 @@ kidsSwimwearTypeList = [
 ]
 
 bagsTypeList = [
-    # 'Fanny Pack',
+    'Fanny Pack',
     # 'All-Over Print Tote',
     # 'Backpack',
     # 'Drawstring Bag',
-    'Beach Bag'
+    # 'Beach Bag'
 ]
 
 flipFlopsTypeList = [

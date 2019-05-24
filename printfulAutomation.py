@@ -29,59 +29,59 @@ def main():
 
         # # sleeved
 
-        createItemsFromItemTypeList(browser, mensSleevedShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
-
-        # # sleeveless
-
-        createItemsFromItemTypeList(browser, mensSleevelessShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
-
-        ### Women's shirts
-
-        # sleeved
-
-        createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        # createItemsFromItemTypeList(browser, mensSleevedShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
 
         # sleeveless
 
-        createItemsFromItemTypeList(browser, womensSleevelessShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        # createItemsFromItemTypeList(browser, mensSleevelessShirtTypeList, 'shirt', color, 'Mens all-over shirts', 'Mens')
 
-        # just front womens shirts
+        ### Women's shirts
 
-        createItemsFromItemTypeList(browser, womensOneSidedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
+        # # sleeved
 
-        ### Unisex sweatshirts
+        # createItemsFromItemTypeList(browser, womensSleevedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-        createItemsFromItemTypeList(browser, sweatshirtTypeList, 'sweatshirt', color, 'Sweatshirts', 'Unisex')
+        # # sleeveless
 
-        ### Mens Shorts
+        # createItemsFromItemTypeList(browser, womensSleevelessShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-        createItemsFromItemTypeList(browser, mensShortsTypeList, 'shorts', color, 'Mens shorts', 'Mens')
+        # # just front womens shirts
 
-        ### Mens Leggings
+        # createItemsFromItemTypeList(browser, womensOneSidedShirtTypeList, 'shirt', color, 'Womens all-over shirts', 'Womens')
 
-        createItemsFromItemTypeList(browser, mensLeggingsTypeList, 'leggings', color, 'Mens leggings', 'Mens')
+        # ### Unisex sweatshirts
 
-        ### Womens Leggings
+        # createItemsFromItemTypeList(browser, sweatshirtTypeList, 'sweatshirt', color, 'Sweatshirts', 'Unisex')
 
-        createItemsFromItemTypeList(browser, womensLeggingsTypeList, 'leggings', color, 'Womens leggings', 'Womens')
+        # ### Mens Shorts
 
-        # Womens Swimwear
+        # createItemsFromItemTypeList(browser, mensShortsTypeList, 'shorts', color, 'Mens shorts', 'Mens')
 
-        createItemsFromItemTypeList(browser, womensSwimwearTypeList, 'swimwear', color, 'Womens swimwear', 'Womens')
+        # ### Mens Leggings
 
-        # Kids Shirts
+        # createItemsFromItemTypeList(browser, mensLeggingsTypeList, 'leggings', color, 'Mens leggings', 'Mens')
 
-        createItemsFromItemTypeList(browser, kidsShirtsTypeList, 'shirt', color, 'Kids all-over shirts', 'Kids')
+        # ### Womens Leggings
 
-        # Kids Leggings
+        # createItemsFromItemTypeList(browser, womensLeggingsTypeList, 'leggings', color, 'Womens leggings', 'Womens')
 
-        createItemsFromItemTypeList(browser, kidsLeggingsTypeList, 'leggings', color, 'Kids leggings', 'Kids')
+        # # Womens Swimwear
 
-        # Kids swimwear
+        # createItemsFromItemTypeList(browser, womensSwimwearTypeList, 'swimwear', color, 'Womens swimwear', 'Womens')
 
-        createItemsFromItemTypeList(browser, kidsSwimwearTypeList, 'swimwear', color, 'Kids swimwear', 'Kids')
+        # # Kids Shirts
 
-        # Bags
+        # createItemsFromItemTypeList(browser, kidsShirtsTypeList, 'shirt', color, 'Kids all-over shirts', 'Kids')
+
+        # # Kids Leggings
+
+        # createItemsFromItemTypeList(browser, kidsLeggingsTypeList, 'leggings', color, 'Kids leggings', 'Kids')
+
+        # # Kids swimwear
+
+        # createItemsFromItemTypeList(browser, kidsSwimwearTypeList, 'swimwear', color, 'Kids swimwear', 'Kids')
+
+        # # Bags
 
         createItemsFromItemTypeList(browser, bagsTypeList, 'bag', color, 'Bags')
 

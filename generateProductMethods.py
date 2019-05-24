@@ -119,6 +119,7 @@ class generateProductMethods():
 
 
     def chooseColor(self, browser, colorName):
+
         uploadFileButton = browser.find_element_by_xpath("//*[contains(text(), 'Upload file')]")
 
         browser.execute_script("arguments[0].scrollIntoView();", uploadFileButton)
@@ -129,13 +130,13 @@ class generateProductMethods():
 
         colorSearch = browser.find_elements_by_xpath("//input[contains(@id,'library-search')]")[-1]
 
-        colorSearch.send_keys(colorName)
+        colorSearch.send_keys(colorName, Keys.ENTER)
 
-        colorSearch.send_keys(Keys.ENTER)
+        # printfulAutomation.waitForPageLoad()
 
-        printfulAutomation.waitForPageLoad()
+        # frontColorChooserButton = browser.find_element_by_xpath('//*[@title="%s.png"]' % colorName)
 
-        frontColorChooserButton = browser.find_element_by_xpath('//*[@title="%s.png"]' % colorName)
+        frontColorChooserButton = navigationFunctions.NavigationFunctions.waitUntilElementLocatedByXpath(self, browser, '//*[@title="' + colorName + '.png"]')
 
         frontColorChooserButton.click()
 
@@ -212,3 +213,4 @@ class generateProductMethods():
             return False
 
         return browser.find_element_by_xpath("//*[translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = \"%s\"]" % name)
+    #Refactoring: combine this findElement function with waitUntilElementLocatedByXpath

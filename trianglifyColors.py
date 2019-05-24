@@ -1,11 +1,11 @@
 
 trianglifyColorDict = [
-    'Purple-Blue-Green-Ocean-Sea-Lake-Water',
+    # 'Purple-Blue-Green-Ocean-Sea-Lake-Water',
     'Blue-Purple-Acid', 
     'Purple-Blue-Ocean-Sea-Lake-Water', 
     'Greens', 
     'Rainbow', 
-    'Red-White-Blue', 
+    'Red-White-Blue',
     'Red-Grey', 
     'Yellow-Green', 
     'Red-Purple', 
@@ -35,4 +35,8 @@ trianglifyColorDict = [
     'Prism', 
     'Blues-Ocean', 
     'Purple-Red', 
-    'Cool-Ocean-Seaside']
+    'Cool-Ocean-Seaside'
+    ]
+
+    # Go back and create all sleeved mens shirts in yellow-orange-brown except for athletic
+    # Womens: Crop T, rash guard, V neck in Plasma
