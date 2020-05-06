@@ -1,5 +1,9 @@
 # Print On Demand
 
+I wanted to see how tight I could make the feedback loop between product experimentation and discovering what my customers want. I created a program that creates its own designs, that were then put on to T-shirts, iPhone cases, fanny packs, and much more. These products were then put on Amazon to see which designs people liked more. The products were printed on demand, so I held no risk of lost inventory
+
+Every step of the process was automated using Python and selenium
+
 ## Source Patterns
 
 ### Trianglify
